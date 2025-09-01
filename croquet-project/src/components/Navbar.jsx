@@ -1,32 +1,37 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
-import "./Navbar.css";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import './Navbar.css';
 
-export default function Navbar() {
-    const [open, setOpen] = useState(false);
+const Navbar = () => {
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+    const toggleMenu = () => {
+        setIsMenuOpen(!isMenuOpen);
+    };
 
     return (
         <nav className="navbar">
             <div className="nav-container">
-                <div className="logo">Egyptian Open Croquet</div>
+                <Link to="/" className="nav-logo" onClick={() => setIsMenuOpen(false)}>
+                    Egyptian Open Croquet
+                </Link>
 
-                {/* Hamburger */}
-                <button
-                    className="hamburger"
-                    onClick={() => setOpen(!open)}
-                >
-                    ☰
-                </button>
+                <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
+                    <Link to="/home" className="nav-item" onClick={() => setIsMenuOpen(false)}>Home</Link>
+                    <Link to="/announcements" className="nav-item" onClick={() => setIsMenuOpen(false)}>Announcements</Link>
+                    <Link to="/gallery" className="nav-item" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
+                    <Link to="/players" className="nav-item" onClick={() => setIsMenuOpen(false)}>Players</Link>
+                    <Link to="/help" className="nav-item" onClick={() => setIsMenuOpen(false)}>Need Help?</Link>
+                </div>
 
-                {/* Links */}
-                <ul className={`nav-links ${open ? "show" : ""}`}>
-                    <li><Link to="/home">Home</Link></li>
-                    <li><Link to="/announcements">Announcements</Link></li>
-                    <li><Link to="/gallery">Gallery</Link></li>
-                    <li><Link to="/players">Players</Link></li>
-                    <li><Link to="/help">Need Help?</Link></li> {/* Add this route later */}
-                </ul>
+                <div className="nav-toggle" onClick={toggleMenu}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
             </div>
         </nav>
     );
-}
+};
+
+export default Navbar;

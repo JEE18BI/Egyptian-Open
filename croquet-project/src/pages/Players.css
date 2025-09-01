@@ -1,33 +1,137 @@
-body{
-    background-color:#f0fff0;
+/* Players.css */
+.players-page {
+    padding: 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
+    min-height: 100vh;
 }
 
-.Container {
+.players-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.players-header h1 {
+    font-size: 2.8rem;
+    color: #1a472a;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.players-intro {
+    font-size: 1.2rem;
+    color: #666;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* Players Grid */
+.players-container {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); /* auto grid */
-    gap: 16px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 3rem;
 }
 
-.Container img {
-    width: 100%;              /* fill grid cell */
-    max-width: 150px;         /* don’t let them grow too big */
-    height: 150px;            /* fixed square shape */
-    object-fit: cover;        /* crop to fit */
-    border-radius: 8px;       /* smooth corners */
-    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-    transition: transform 0.2s ease-in-out;
+.player-card {
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    background: white;
 }
 
-.Container img:hover {
+.player-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.player-image-container {
+    position: relative;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+}
+
+.player-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+}
+
+.player-card:hover .player-image {
     transform: scale(1.05);
 }
-h1{
-    text-align: center;
-    padding-top: 80px;
+
+.player-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
+    padding: 1rem;
+    color: white;
+    opacity: 0;
+    transition: opacity 0.3s ease;
 }
-.p1{
+
+.player-card:hover .player-overlay {
+    opacity: 1;
+}
+
+.player-number {
+    font-size: 0.9rem;
+    font-weight: 600;
+    background: rgba(26, 71, 42, 0.8);
+    padding: 0.3rem 0.8rem;
+    border-radius: 15px;
+}
+
+.players-footer {
     text-align: center;
-    font-family: "Arabic Typesetting";
-    font-size: 18px;
+    padding: 2rem;
+    background: #f8f9fa;
+    border-radius: 10px;
+    margin-top: 2rem;
+}
+
+.players-footer p {
+    color: #555;
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .players-page {
+        padding: 1rem;
+    }
+
+    .players-header h1 {
+        font-size: 2.2rem;
+    }
+
+    .players-container {
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 1rem;
+    }
+
+    .player-image-container {
+        height: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .players-container {
+        grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    }
+
+    .player-image-container {
+        height: 180px;
+    }
+
+    .players-header h1 {
+        font-size: 1.8rem;
+    }
 }
