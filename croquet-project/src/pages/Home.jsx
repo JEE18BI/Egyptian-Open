@@ -1,128 +1,94 @@
-import { useState } from "react";
-import "./Help.css";
+import React, { useState, useEffect } from 'react';
+import Navbar from '../components/Navbar';
+import './Home.css';
 
-export default function Help() {
-    const contacts = [
-        { name: "Tournament Director", phone: "0100000000", icon: "👑" },
-        { name: "Head Referee", phone: "0111111111", icon: "⚖️" },
-        { name: "Emergency Contact", phone: "0122222222", icon: "🚑" },
-    ];
+// Import your images (adjust paths as needed)
+import bg1 from '../components/1.jpg';
+import bg2 from '../components/2.jpg';
+import bg3 from '../components/3.jpg';
+import bg4 from '../components/4.jpg';
 
-    const faqs = [
-        {
-            q: "What courts are the tournament played on?",
-            a: "The Egyptian Open is played across multiple prestigious clubs: El-Gezira Club, Federation Courts, Heliopolis Club, Shooting Club, and El-Zohor Club.",
-            icon: "🎾"
-        },
-        {
-            q: "Is the final match best of 3 or best of 5?",
-            a: "The final match is played as best of 3.",
-            icon: "🏆"
-        },
-        {
-            q: "Is there an entry fee?",
-            a: "Yes, the entry fee is 200 USD or 10,000 EGP.",
-            icon: "💰"
-        },
-        {
-            q: "When do buses leave?",
-            a: "Buses will depart daily from participating clubs in the morning and return after the last match. Exact times will be announced before the tournament.",
-            icon: "🚌"
-        },
-        {
-            q: "What about food options?",
-            a: "At El-Gezira and Federation Courts, the main restaurant is highly recommended and located right next to the courts. At Shooting Club, La Poire (just in front of the courts) and Bon Appetit are popular choices. For Heliopolis and El-Zohor Club, details will be shared soon.",
-            icon: "🍽️"
-        },
-        {
-            q: "What's the weather like during the tournament?",
-            a: "It will be sunny and hot. We recommend wearing light clothing, staying hydrated, and using sunblock. Hats and sunglasses are also a good idea!",
-            icon: "☀️"
-        },
-        {
-            q: "Who can I contact for urgent help?",
-            a: "Please reach out to the Tournament Director or Head Referee listed above in the contact section.",
-            icon: "🆘"
-        }
-    ];
+const Home = () => {
+    const [currentBg, setCurrentBg] = useState(0);
 
-    const [openIndex, setOpenIndex] = useState(null);
+    // Background images array using imported images
+    const backgroundImages = [bg1, bg2, bg3, bg4];
+
+    // Change background every 5 seconds
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setCurrentBg((prevBg) => (prevBg + 1) % backgroundImages.length);
+        }, 2000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
-        <div className="help-page">
-            <div className="help-header">
-                <div className="header-content">
-                    <h1>Need Help? <span className="header-emoji">📞</span></h1>
-                    <div className="decorative-line"></div>
-                    <p>We're here to assist you with any questions or concerns about the Egyptian Open Championship</p>
+        <div className="app">
+
+
+            {/* Hero Section with changing background */}
+            <div
+                className="hero-section"
+                style={{
+                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImages[currentBg]})`
+                }}
+            >
+                <div className="hero-content">
+                    <h2>WELCOME TO THE 20TH EGYPTIAN OPEN!</h2>
+                    <p>where fun and skills meet.</p>
+
                 </div>
             </div>
 
-            {/* Contacts Section */}
-            <div className="contacts-section">
-                <div className="section-header">
-                    <h2>Important Contacts</h2>
-                    <p>Reach out to our team for immediate assistance</p>
-                </div>
-
-                <div className="contact-cards">
-                    {contacts.map((c, index) => (
-                        <div key={index} className="contact-card">
-                            <div className="card-decoration"></div>
-                            <div className="contact-icon">{c.icon}</div>
-                            <div className="contact-info">
-                                <h3>{c.name}</h3>
-                                <p>{c.phone}</p>
-                            </div>
-                            <a href={`tel:${c.phone}`} className="call-button">
-                                <span>Call Now</span>
-                                <span className="phone-icon">📞</span>
-                            </a>
-                        </div>
-                    ))}
-                </div>
+            {/* Content Sections */}
+            <div className="content-section">
+                <h3>About Egyptian Open Tournament </h3>
+                <p>The Egyptian Open Croquet Championship is the most prestigious croquet event in North Africa, attracting players and enthusiasts from around the world. Established in 2006, our tournament combines tradition with competitive excellence.</p>
             </div>
 
-            {/* FAQ Section */}
-            <div className="faq-section">
+            <div className="content-section dark">
                 <div className="section-header">
-                    <h2>Frequently Asked Questions</h2>
-                    <p>Find answers to common questions about the tournament</p>
+                    <h3>What You Will Experience</h3>
+                    <p>Discover the unique aspects of the Egyptian Open Championship</p>
                 </div>
-
-                <div className="faq-list">
-                    {faqs.map((item, index) => (
-                        <div key={index} className={`faq-item ${openIndex === index ? 'active' : ''}`}>
-                            <div className="faq-icon">{item.icon}</div>
-                            <div className="faq-content">
-                                <button
-                                    className="faq-question"
-                                    onClick={() => setOpenIndex(openIndex === index ? null : index)}
-                                >
-                                    <span>{item.q}</span>
-                                    <span className="toggle-icon">{openIndex === index ? '−' : '+'}</span>
-                                </button>
-                                <div className="faq-answer">
-                                    <div className="answer-content">
-                                        <p>{item.a}</p>
-                                    </div>
-                                </div>
+                <div className="experiences-grid">
+                    <div className="experience-card">
+                        <div className="card-icon">🏆</div>
+                        <div className="card-content">
+                            <h4>Top Competition</h4>
+                            <p>Here in Cairo!</p>
+                            <div className="card-hover">
+                                <p>World-class players competing at the highest level in Egypt's premier croquet tournament.</p>
                             </div>
                         </div>
-                    ))}
-                </div>
-            </div>
+                    </div>
 
-            {/* Additional Info Section */}
-            <div className="info-section">
-                <div className="info-card">
-                    <div className="info-icon">ℹ️</div>
-                    <div className="info-content">
-                        <h3>Need More Help?</h3>
-                        <p>If you can't find what you're looking for, don't hesitate to reach out to any tournament official. We're here to make your experience unforgettable!</p>
+                    <div className="experience-card">
+                        <div className="card-icon">🌍</div>
+                        <div className="card-content">
+                            <h4>Meeting International Friends</h4>
+                            <p>We Missed You!</p>
+                            <div className="card-hover">
+                                <p>Reconnect with croquet enthusiasts from around the world in a celebration of sportsmanship.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="experience-card">
+                        <div className="card-icon">⚜️</div>
+                        <div className="card-content">
+                            <h4>Unique Croquet Style</h4>
+                            <p>In The Land Of The Pharaohs</p>
+                            <div className="card-hover">
+                                <p>Experience Egyptian-style croquet with its distinctive rules and traditional playing techniques.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     );
-}
+};
+
+export default Home;
