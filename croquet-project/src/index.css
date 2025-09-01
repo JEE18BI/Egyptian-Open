@@ -1,0 +1,55 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background: #fff;
+    color: #222;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Sections scale */
+section {
+    width: 100%;
+    max-width: 1200px;
+    padding: 1rem;
+}
+
+/* Headings */
+h1, h2 {
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+
+/* 📱 Base (mobile first) */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* 📱 Tablet */
+@media (min-width: 768px) {
+    section {
+        padding: 2rem;
+    }
+    h1 {
+        font-size: 2rem;
+    }
+}
+
+/* 🖥️ Desktop */
+@media (min-width: 1024px) {
+    section {
+        padding: 3rem;
+    }
+    h1 {
+        font-size: 2.5rem;
+    }
+}

@@ -1,0 +1,112 @@
+/* Navbar base */
+.navbar {
+    width: 100%;
+    background: #006400; /* dark green */
+    color: white;
+    position: fixed; /* stick at top */
+    top: 0;
+    left: 0;
+    z-index: 1000; /* above slideshow */
+}
+
+/* inner container */
+.nav-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+
+/* logo */
+.logo {
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+/* links - mobile default (hidden) */
+.nav-links {
+    display: none;
+    flex-direction: column;
+    background: #004d00;
+    position: absolute;
+    top: 60px; /* just below navbar */
+    right: 0;
+    width: 200px;
+    padding: 1rem;
+    list-style: none;
+    margin: 0;
+}
+
+/* when open */
+.nav-links.show {
+    display: flex;
+}
+
+/* nav link styling */
+.nav-links li {
+    margin: 0.5rem 0;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-size: 1rem;
+}
+
+/* hamburger */
+.hamburger {
+    font-size: 1.5rem;
+    background: none;
+    border: none;
+    color: white;
+    cursor: pointer;
+    display: block;
+}
+
+/* Tablet and up */
+@media (min-width: 768px) {
+    .hamburger {
+        display: none; /* hide hamburger */
+    }
+
+    .nav-links {
+        display: flex !important;
+        flex-direction: row;
+        position: static;
+        background: none;
+        width: auto;
+        padding: 0;
+    }
+
+    .nav-links li {
+        margin: 0 1rem;
+    }
+
+    .nav-links a {
+        font-size: 1.1rem;
+    }
+}
+
+/* Desktop */
+@media (min-width: 1024px) {
+    .logo {
+        font-size: 1.5rem;
+    }
+}
+.navbar {
+    width: 100%;
+    background: #006400;
+    color: white;
+}
+
+.nav-container {
+    max-width: 1200px;   /* same as your sections */
+    margin: 0 auto;      /* center */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+}
+

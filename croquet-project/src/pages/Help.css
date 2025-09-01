@@ -1,0 +1,79 @@
+.help-page {
+    max-width: 800px;
+    margin: 50px auto 50px; /* push below navbar */
+    padding: 1rem;
+    font-family: Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: #006400;
+}
+
+/* Contacts */
+.contacts {
+    margin-bottom: 3rem;
+}
+
+.contact-list {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.contact-card {
+    background: #f4f4f4;
+    border: 1px solid #ddd;
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    text-align: center;
+    min-width: 180px;
+}
+
+.call-btn {
+    margin-left: 18px;
+    display: inline-block;
+    margin-top: 0.5rem;
+    padding: 0.4rem 0.8rem;
+    background: #006400;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.call-btn:hover {
+    background: #004d00;
+}
+
+/* FAQ Section */
+.faqs {
+    margin-top: 2rem;
+}
+
+.faq-item {
+    margin-bottom: 1rem;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.5rem;
+}
+
+.faq-question {
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    color: #006400;
+    padding: 0.5rem 0;
+}
+
+.faq-answer {
+    margin-top: 0.5rem;
+    padding-left: 1rem;
+    color: #333;
+    font-size: 0.95rem;
+}
