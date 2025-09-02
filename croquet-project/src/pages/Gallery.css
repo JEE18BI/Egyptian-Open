@@ -1,0 +1,91 @@
+/* Page background and layout */
+.gallery-page {
+    min-height: 100vh;
+    padding: 3rem 2rem;
+    max-width: 1000px;
+    margin: 0 auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+/* Header styles */
+.gallery-header {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.gallery-header h1 {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+}
+
+.gallery-header p {
+    font-size: 1.2rem;
+    color: #7f8c8d;
+}
+
+/* WhatsApp section */
+.whatsapp-box {
+    text-align: center;
+    background: #f0fdf4;
+    padding: 2rem;
+    border-radius: 15px;
+    border: 1px solid #d1fae5;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    margin-top: auto;
+}
+
+.whatsapp-box p {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 1.2rem;
+}
+
+/* WhatsApp button */
+.whatsapp-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: #25D366;
+    color: white;
+    font-weight: bold;
+    padding: 0.9rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 16px rgba(37, 211, 102, 0.3);
+}
+
+.whatsapp-button:hover {
+    background-color: #20b858;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(37, 211, 102, 0.5);
+}
+
+/* Icon styling */
+.whatsapp-icon {
+    font-size: 1.3rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .gallery-header h1 {
+        font-size: 2rem;
+    }
+    .gallery-header p {
+        font-size: 1rem;
+    }
+    .whatsapp-button {
+        width: 100%;
+        justify-content: center;
+    }
+}

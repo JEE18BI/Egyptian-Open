@@ -1,0 +1,86 @@
+.live-matches-page {
+    padding: 2rem;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: #fdfdfb;
+    color: #333;
+}
+
+.matches-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.match-search-input {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+    width: 100%;
+    max-width: 400px;
+}
+
+.day-section {
+    margin-bottom: 2rem;
+    border: 1px solid #e0e0e0;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #fff;
+}
+
+.day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #92b892;
+    color: #fff;
+    padding: 0.8rem 1rem;
+    cursor: pointer;
+    font-weight: 600;
+}
+
+.matches-table-container {
+    overflow-x: auto; /* enables horizontal scroll on small screens */
+}
+
+.matches-table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 600px; /* ensures table doesn't shrink too much */
+}
+
+.matches-table th,
+.matches-table td {
+    padding: 0.6rem 1rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+.matches-table th {
+    background: #f4f4f4;
+}
+
+.matches-table tr:hover {
+    background: #f6faf6;
+}
+
+.toggle-icon {
+    font-size: 1.2rem;
+}
+
+/* ================== RESPONSIVE STYLES ================== */
+@media (max-width: 768px) {
+    .live-matches-page {
+        padding: 1rem;
+    }
+
+    .match-search-input {
+        max-width: 100%;
+    }
+
+    .matches-table th,
+    .matches-table td {
+        padding: 0.5rem 0.7rem;
+        font-size: 0.9rem;
+    }
+}

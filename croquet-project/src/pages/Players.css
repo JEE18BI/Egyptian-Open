@@ -1,137 +1,184 @@
-/* Players.css */
+/* === Page Layout === */
 .players-page {
     padding: 2rem;
-    max-width: 1400px;
-    margin: 0 auto;
-    min-height: 100vh;
+    font-family: 'Arial', sans-serif;
+    color: #222;
+    background: #fdfdfd;
 }
 
+/* === Header === */
 .players-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
 }
 
 .players-header h1 {
-    font-size: 2.8rem;
-    color: #1a472a;
+    font-size: 2.2rem;
     margin-bottom: 0.5rem;
-    font-weight: 700;
 }
 
 .players-intro {
-    font-size: 1.2rem;
-    color: #666;
-    max-width: 600px;
-    margin: 0 auto;
+    font-size: 1.1rem;
+    color: #555;
 }
 
-/* Players Grid */
-.players-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    gap: 1.5rem;
+/* === Country Section === */
+.country-section {
     margin-bottom: 3rem;
 }
 
+.country-header {
+    margin-bottom: 1rem;
+    border-left: 5px solid #c8102e; /* Egyptian Open theme red */
+    padding-left: 0.75rem;
+}
+
+.country-header h2 {
+    font-size: 1.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* === Players Grid === */
+.players-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 1rem;
+}
+
+/* === Player Card === */
 .player-card {
-    border-radius: 12px;
+    position: relative;
     overflow: hidden;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
+    border-radius: 12px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease;
     background: white;
 }
 
 .player-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
+/* === Player Image === */
 .player-image-container {
     position: relative;
-    width: 100%;
-    height: 250px;
-    overflow: hidden;
 }
 
 .player-image {
     width: 100%;
-    height: 100%;
+    height: 200px;
     object-fit: cover;
-    transition: transform 0.3s ease;
+    display: block;
+    border-radius: 12px;
 }
 
-.player-card:hover .player-image {
-    transform: scale(1.05);
-}
-
+/* === Overlay with name/number === */
 .player-overlay {
     position: absolute;
     bottom: 0;
     left: 0;
     right: 0;
-    background: linear-gradient(transparent, rgba(0, 0, 0, 0.7));
-    padding: 1rem;
+    background: rgba(0,0,0,0.6);
     color: white;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-}
-
-.player-card:hover .player-overlay {
-    opacity: 1;
+    padding: 0.5rem;
+    font-size: 0.9rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .player-number {
-    font-size: 0.9rem;
-    font-weight: 600;
-    background: rgba(26, 71, 42, 0.8);
-    padding: 0.3rem 0.8rem;
-    border-radius: 15px;
+    font-weight: bold;
+    font-size: 0.85rem;
 }
 
+.player-name {
+    margin-top: 0.2rem;
+    font-size: 0.95rem;
+    font-weight: 500;
+}
+
+/* === Footer === */
 .players-footer {
     text-align: center;
-    padding: 2rem;
-    background: #f8f9fa;
-    border-radius: 10px;
     margin-top: 2rem;
+    font-size: 1rem;
+    color: #333;
 }
 
-.players-footer p {
-    color: #555;
-    font-size: 1.1rem;
-    margin: 0;
-}
+/* ================== RESPONSIVE STYLES ================== */
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .players-page {
-        padding: 1rem;
-    }
-
-    .players-header h1 {
-        font-size: 2.2rem;
-    }
-
+/* Tablets (<= 992px) */
+@media (max-width: 992px) {
     .players-container {
-        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-        gap: 1rem;
+        grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
     }
 
-    .player-image-container {
-        height: 200px;
+    .player-image {
+        height: 180px;
+    }
+
+    .country-header h2 {
+        font-size: 1.4rem;
     }
 }
 
-@media (max-width: 480px) {
+/* Mobile (<= 768px) */
+@media (max-width: 768px) {
     .players-container {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+        gap: 0.75rem;
     }
 
-    .player-image-container {
-        height: 180px;
+    .player-image {
+        height: 160px;
     }
 
     .players-header h1 {
         font-size: 1.8rem;
+    }
+
+    .players-intro {
+        font-size: 1rem;
+    }
+
+    .country-header h2 {
+        font-size: 1.3rem;
+    }
+
+    .player-overlay {
+        font-size: 0.85rem;
+        padding: 0.4rem;
+    }
+}
+
+/* Small phones (<= 480px) */
+@media (max-width: 480px) {
+    .players-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        gap: 0.5rem;
+    }
+
+    .player-image {
+        height: 140px;
+    }
+
+    .players-header h1 {
+        font-size: 1.5rem;
+    }
+
+    .players-intro {
+        font-size: 0.95rem;
+    }
+
+    .country-header h2 {
+        font-size: 1.1rem;
+    }
+
+    .player-overlay {
+        font-size: 0.8rem;
+        padding: 0.3rem;
     }
 }

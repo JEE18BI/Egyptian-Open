@@ -1,0 +1,319 @@
+/* === Page Layout === */
+.clubs-page {
+    padding: 2rem;
+    font-family: 'Arial', sans-serif;
+    background: #fdfdfd;
+    color: #222;
+    min-height: 100vh;
+}
+
+/* === Header === */
+.clubs-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.clubs-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #1a472a;
+}
+
+.clubs-header p {
+    font-size: 1.1rem;
+    color: #555;
+}
+
+/* === Clubs Grid === */
+.clubs-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* === Club Card === */
+.club-card {
+    position: relative;
+    cursor: pointer;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    background: #fff;
+}
+
+.club-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+}
+
+/* === Club Image === */
+.club-image-container {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.club-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.club-card:hover .club-image {
+    transform: scale(1.05);
+}
+
+/* === Overlay === */
+.club-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.7);
+    color: white;
+    text-align: center;
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.club-card:hover .club-overlay {
+    opacity: 1;
+}
+
+/* === Club Name === */
+.club-name {
+    text-align: center;
+    padding: 1rem 0.5rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #333;
+}
+
+/* === Overlay / Details Panel === */
+.club-details-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    padding: 1rem;
+    overflow-y: auto;
+}
+
+/* === Details Box - Fixed Size === */
+.club-details {
+    background: #fff;
+    border-radius: 16px;
+    width: 90%;
+    max-width: 600px;
+    max-height: 90vh;
+    position: relative;
+    overflow-y: auto;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: slideIn 0.3s ease;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* === Close Button - Always Visible === */
+.close-button {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-size: 1.8rem;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+    transition: all 0.2s ease;
+}
+
+.close-button:hover {
+    background: #ff4d4d;
+    transform: scale(1.1);
+}
+
+/* === Details Image === */
+.details-image-container {
+    width: 100%;
+    height: 200px;
+    overflow: hidden;
+}
+
+.details-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* === Details Content === */
+.details-content {
+    padding: 1.5rem;
+}
+
+.details-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.details-header h2 {
+    font-size: 1.6rem;
+    margin: 0;
+    color: #1a472a;
+}
+
+.club-logo {
+    font-size: 2.5rem;
+}
+
+.details-section {
+    margin-bottom: 1.2rem;
+}
+
+.details-section h4 {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+    color: #c8102e;
+    display: flex;
+    align-items: center;
+}
+
+.details-section h4::before {
+    margin-right: 0.5rem;
+}
+
+.details-section p,
+.details-section ul {
+    font-size: 0.95rem;
+    color: #444;
+    line-height: 1.5;
+}
+
+.details-section ul {
+    padding-left: 1.2rem;
+}
+
+.details-section li {
+    margin-bottom: 0.5rem;
+}
+
+/* === Directions Button === */
+.details-footer {
+    padding: 1rem 1.5rem;
+    text-align: center;
+    border-top: 1px solid #eee;
+}
+
+.directions-button {
+    padding: 0.8rem 1.5rem;
+    background: #c8102e;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+}
+
+.directions-button:hover {
+    background: #a10a1f;
+    transform: translateY(-2px);
+}
+
+/* === Responsive Design === */
+@media (max-width: 768px) {
+    .clubs-page {
+        padding: 1rem;
+    }
+
+    .clubs-container {
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 1rem;
+    }
+
+    .club-image-container {
+        height: 150px;
+    }
+
+    .club-details {
+        width: 95%;
+        max-height: 85vh;
+    }
+
+    .details-image-container {
+        height: 150px;
+    }
+
+    .details-content {
+        padding: 1rem;
+    }
+
+    .details-header h2 {
+        font-size: 1.4rem;
+    }
+
+    .club-logo {
+        font-size: 2rem;
+    }
+
+    .close-button {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .clubs-container {
+        grid-template-columns: 1fr;
+    }
+
+    .club-details {
+        border-radius: 12px;
+    }
+
+    .details-header {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.5rem;
+    }
+
+    .directions-button {
+        width: 100%;
+    }
+}
