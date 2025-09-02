@@ -13,7 +13,7 @@ export default function Slideshow() {
             <img src={img3} alt="slide 3" />
             <img src={img4} alt="slide 4" />
             <div className="hero-text">
-                <h1 className="H1">Egyptian Open Croquet</h1>
+                <h1 className="H1">Egyptian Open Croquet!</h1>
                 <p>Welcome to the championship</p>
             </div>
         </div>
