@@ -7,12 +7,15 @@ import bg1 from '../components/1.jpg';
 import bg2 from '../components/2.jpg';
 import bg3 from '../components/3.jpg';
 import bg4 from '../components/4.jpg';
+import bg5 from '../components/5.jpg';
+import {useNavigate} from "react-router-dom";
 
 const Home = () => {
     const [currentBg, setCurrentBg] = useState(0);
+    const navigate = useNavigate();
 
     // Background images array using imported images
-    const backgroundImages = [bg1, bg2, bg3, bg4];
+    const backgroundImages = [bg1, bg2, bg3, bg4,bg5];
 
     // Change background every 5 seconds
     useEffect(() => {
@@ -38,6 +41,12 @@ const Home = () => {
                     <h2>WELCOME TO THE 20TH EGYPTIAN OPEN!</h2>
                     <p>where fun and skills meet.</p>
 
+                    <button
+                        className="view-details-btn"
+                        onClick={() => navigate("/announcements")}
+                    >
+                        View Tournament details
+                    </button>
                 </div>
             </div>
 

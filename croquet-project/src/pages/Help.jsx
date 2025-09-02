@@ -1,11 +1,15 @@
 import { useState } from "react";
 import "./Help.css";
 
+
 export default function Help() {
     const contacts = [
-        { name: "Tournament Director", phone: "0100000000", icon: "👑" },
-        { name: "Head Referee", phone: "0111111111", icon: "⚖️" },
-        { name: "Emergency Contact", phone: "0122222222", icon: "🚑" },
+        { name: "Mohamed Hassan (Tournament Director)", phone: "+201002597737", icon: "👑" },
+        { name: "Dr Mohamed Raslan", phone: "+201005252523", icon: "🩺" },
+        {name: "Jana Mohamed (Emergency)", phone: "+201060676156", icon: "⚡" },
+        { name: "Shooting Club Contact: Ghada", phone: "+01007128666", icon: "🏹" },
+        { name: "El-Zohor Club Contact: Salah Hassan", phone: "+201141191118", icon: "🌅" },
+        { name: "Heliopolis Club Contact", phone: "", icon: "🌳" } // Blank for now
     ];
 
     const faqs = [
@@ -16,7 +20,7 @@ export default function Help() {
         },
         {
             q: "Is the final match best of 3 or best of 5?",
-            a: "The final match is played as best of 3.",
+            a: "The final match is played as best of 5.",
             icon: "🏆"
         },
         {
@@ -31,7 +35,7 @@ export default function Help() {
         },
         {
             q: "What about food options?",
-            a: "At El-Gezira and Federation Courts, the main restaurant is highly recommended and located right next to the courts. At Shooting Club, La Poire (just in front of the courts) and Bon Appetit are popular choices. For Heliopolis and El-Zohor Club, details will be shared soon.",
+            a: "Food Ordering Options will be available when the tournament starts",
             icon: "🍽️"
         },
         {
@@ -41,7 +45,7 @@ export default function Help() {
         },
         {
             q: "Who can I contact for urgent help?",
-            a: "Please reach out to the Tournament Director or Head Referee listed above in the contact section.",
+            a: "Please reach out to any of the tournament officials listed above in the contact section.",
             icon: "🆘"
         }
     ];
@@ -50,6 +54,7 @@ export default function Help() {
 
     return (
         <div className="help-page">
+            {/* Header */}
             <div className="help-header">
                 <div className="header-content">
                     <h1>Need Help? <span className="header-emoji">📞</span></h1>
@@ -68,16 +73,16 @@ export default function Help() {
                 <div className="contact-cards">
                     {contacts.map((c, index) => (
                         <div key={index} className="contact-card">
-                            <div className="card-decoration"></div>
                             <div className="contact-icon">{c.icon}</div>
                             <div className="contact-info">
                                 <h3>{c.name}</h3>
-                                <p>{c.phone}</p>
+                                {c.phone ? <p>{c.phone}</p> : <p>Contact not available yet</p>}
                             </div>
-                            <a href={`tel:${c.phone}`} className="call-button">
-                                <span>Call Now</span>
-                                <span className="phone-icon">📞</span>
-                            </a>
+                            {c.phone && (
+                                <a href={`tel:${c.phone}`} className="call-button">
+                                    <span>Call Now</span> <span className="phone-icon">📞</span>
+                                </a>
+                            )}
                         </div>
                     ))}
                 </div>
