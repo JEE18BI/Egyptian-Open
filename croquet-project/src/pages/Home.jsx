@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Navbar from '../components/Navbar';
+
 import './Home.css';
 
 // Import your images (adjust paths as needed)
