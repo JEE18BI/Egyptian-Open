@@ -112,14 +112,49 @@ export default function Announcements() {
                 {/* Right Column - Announcements */}
                 <div className="announcements-column">
                     <h2>📌 Announcements</h2>
+
+                    {/* Hotel Announcement Block */}
+                    <div className="hotel-announcement">
+                        <h3>🏨 Official Hotel Offer</h3>
+                        <p>
+                            We are pleased to offer you exclusive special rates for the upcoming{" "}
+                            <strong>Champion 2025 event</strong> at{" "}
+                            <strong>President Hotel</strong>.
+                        </p>
+                        <ul>
+                            <li>Deluxe Single Room: <strong>$80</strong> per night</li>
+                            <li>Deluxe Double Room: <strong>$90</strong> per night</li>
+                            <li>Includes breakfast, service charge & taxes</li>
+                        </ul>
+                        <p>Reservation Code: <strong>EC-25</strong></p>
+                        <p>
+                            📧 Booking Mail:{" "}
+                            <a href="mailto:bookings@thepresidentcairo.com">
+                                bookings@thepresidentcairo.com
+                            </a>
+                        </p>
+                        <p>
+                            ❗ Cancellations: Free until 14 days before arrival. Within 48h or “no-show”, full charge applies.
+                        </p>
+                    </div>
+
+                    {/* Daily Announcements from CSV */}
                     {Object.keys(grouped).length === 0 ? (
                         <p>No announcements at the moment.</p>
                     ) : (
                         Object.entries(grouped).map(([day, items]) => (
-                            <div key={day} className={`day-section ${activeDay === day ? "active" : ""}`}>
-                                <div className="day-header" onClick={() => toggleDay(day)}>
+                            <div
+                                key={day}
+                                className={`day-section ${activeDay === day ? "active" : ""}`}
+                            >
+                                <div
+                                    className="day-header"
+                                    onClick={() => toggleDay(day)}
+                                >
                                     <h3>{day}</h3>
-                                    <span className="toggle-icon">{activeDay === day ? "−" : "+"}</span>
+                                    <span className="toggle-icon">
+                                        {activeDay === day ? "−" : "+"}
+                                    </span>
                                 </div>
                                 <div className="announcements-list">
                                     {items.map((ann, i) => (

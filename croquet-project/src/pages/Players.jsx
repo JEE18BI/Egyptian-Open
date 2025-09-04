@@ -12,6 +12,19 @@ export default function Players() {
                 { id: 47, name: "Soha Mostafa", photo: "/players/3.jpg" },
                 { id: 48, name: "Mohamed Walid", photo: "/players/4.jpg" },
                 { id: 49, name: "Mohamed Taha", photo: "/players/5.jpg" },
+                { id: 50, name: "Fawzy Helmy", photo: "/players/fawzy.png" },
+                { id: 51, name: "Khaled Kamel", photo: "/players/khaledkamel.jpg" },
+                {id:52, name: "Ayman Nagah", photo: "/players/ayman.jpg"},
+                {id:53, name: "Mohamed Abo-Elnour", photo: "/players/mohamedaboelnour.jpg"},
+                {id:54, name: "Dina Saad", photo: "/players/dinasaad.jpg"},
+                {id:54, name: "Khaled Hazem", photo: "/players/khaledhazem.jpg"},
+                {id:55, name: "", photo: "/players/.jpg"},
+
+
+
+
+
+
                 // ... continue adding up to player 80
             ]
         },
@@ -41,8 +54,8 @@ export default function Players() {
                 { id: 8, name: "Tom Balding", photo: "/players/tom.jpg" },
                 { id: 9, name: "Len Canavan", photo: "/players/len.jpg" },
                 { id: 10, name: "Bill Simmons", photo: "/players/bill.jpg" },
-                { id: 11, name: "Kyle Maloof", photo: "/players/kyle.jpg" },
-                { id: 12, name: "Gabriella Maloof", photo: "/players/gabriella.jpg" },
+                { id: 11, name: "Kyle Maloof", photo: "/players/kyle.png" },
+                { id: 12, name: "Gabriella Maloof", photo: "/players/gabriella.png" },
                 { id: 24, name: "Sherif Abdelwahab", photo: "/players/sherif.jpg" },
                 { id: 25, name: "Ahab Abdel Wahab", photo: "/players/ahab.jpg" },
                 { id: 26, name: "Tamer Hatata", photo: "/players/tamer.jpg" },
