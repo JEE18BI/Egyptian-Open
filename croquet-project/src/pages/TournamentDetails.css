@@ -1,0 +1,180 @@
+/* Modern Tournament Details CSS */
+.tournament-container {
+    max-width: 100%;
+    margin: 0 auto;
+    padding: 2rem;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    min-height: 100vh;
+}
+
+.tournament-title {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: #2c3e50;
+    position: relative;
+    padding-bottom: 0.5rem;
+    animation: fadeInDown 0.8s ease-out;
+}
+
+.tournament-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 4px;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+    border-radius: 2px;
+}
+
+.tournament-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    margin-top: 1rem;
+}
+
+.tournament-card {
+    background: white;
+    border-radius: 12px;
+    padding: 1.8rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.6s ease-out;
+    animation-fill-mode: both;
+}
+
+.tournament-card:nth-child(1) { animation-delay: 0.2s; }
+.tournament-card:nth-child(2) { animation-delay: 0.3s; }
+.tournament-card:nth-child(3) { animation-delay: 0.4s; }
+.tournament-card:nth-child(4) { animation-delay: 0.5s; }
+
+.tournament-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 0;
+    background: linear-gradient(to bottom, #3498db, #2ecc71);
+    transition: height 0.5s ease;
+}
+
+.tournament-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+}
+
+.tournament-card:hover::before {
+    height: 100%;
+}
+
+.tournament-card h3 {
+    font-size: 1.4rem;
+    margin-bottom: 1.2rem;
+    color: #2c3e50;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tournament-card ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.tournament-card li {
+    padding: 0.6rem 0;
+    color: #34495e;
+    position: relative;
+    padding-left: 1.8rem;
+    line-height: 1.6;
+    transition: transform 0.3s ease;
+}
+
+.tournament-card li:hover {
+    transform: translateX(5px);
+}
+
+.tournament-card li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: #2ecc71;
+    font-weight: bold;
+}
+
+/* Animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .tournament-container {
+        padding: 1.5rem;
+    }
+
+    .tournament-title {
+        font-size: 2rem;
+    }
+
+    .tournament-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Decorative elements */
+.tournament-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 80px;
+    height: 80px;
+    background: radial-gradient(circle at center, rgba(46, 204, 113, 0.1) 0%, transparent 70%);
+    border-radius: 50%;
+    z-index: 0;
+}
+
+/* Subtle background pattern */
+.tournament-container {
+    position: relative;
+}
+
+.tournament-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image:
+            radial-gradient(circle at 20% 80%, rgba(52, 152, 219, 0.05) 0%, transparent 25%),
+            radial-gradient(circle at 80% 20%, rgba(46, 204, 113, 0.05) 0%, transparent 25%),
+            radial-gradient(circle at 40% 40%, rgba(155, 89, 182, 0.05) 0%, transparent 25%);
+    pointer-events: none;
+}

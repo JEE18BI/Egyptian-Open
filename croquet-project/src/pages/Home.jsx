@@ -43,7 +43,7 @@ const Home = () => {
 
                     <button
                         className="view-details-btn"
-                        onClick={() => navigate("/announcements")}
+                        onClick={() => navigate("/tournament-details")}
                     >
                         View Tournament details
                     </button>

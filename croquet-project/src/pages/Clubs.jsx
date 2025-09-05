@@ -54,7 +54,7 @@ export default function Clubs() {
             description: "Multi-sport club known for its excellent facilities and organization.",
             address: "Dokki, Cairo",
             contact: "+20 2 3336 3456",
-            Facilities: ["2 Croquet Courts", "Cafeteria & Nearby Fast Food Restaurants", "Air-conditioned Players’ Lounge", "Bathrooms & Locker Rooms"],
+            facilities: ["2 Croquet Courts", "Cafeteria & Nearby Fast Food Restaurants", "Air-conditioned Players’ Lounge", "Bathrooms & Locker Rooms"],
             tips: "La Poire (just in front of the courts) and Bon Appetit are popular choices for dining.",
             location: "https://maps.app.goo.gl/KdoJUsi4ZkruQfEn9?g_st=ipc"
         },
@@ -66,7 +66,7 @@ export default function Clubs() {
             description: "Exclusive club with top-notch amenities and professional staff.",
             address: "Nasr City, Cairo",
             contact: "",
-            Facilities: ["2 Croquet Courts", "Cafeteria", "Air-conditioned Players’ Lounge", "Bathrooms & Locker Rooms"],
+            facilities: ["2 Croquet Courts", "Cafeteria", "Air-conditioned Players’ Lounge", "Bathrooms & Locker Rooms"],
             tips: "Check the schedule for special events during the tournament.",
             location:"https://maps.app.goo.gl/sCMjZJUe5TthFePU8?g_st=ipc"
         }
@@ -97,65 +97,69 @@ export default function Clubs() {
                 ))}
             </div>
 
-            {selectedClub && (
-                <div className="club-details-overlay">
-                    <div className="club-details">
-                        {/* Close button */}
-                        <button className="close-button" onClick={() => setSelectedClub(null)}>×</button>
+            {/* Modal overlay with conditional active class */}
+            <div className={`club-details-overlay ${selectedClub ? 'active' : ''}`}
+                 onClick={() => setSelectedClub(null)}>
+                <div className="club-details" onClick={(e) => e.stopPropagation()}>
+                    {/* Close button */}
+                    <button className="close-button" onClick={() => setSelectedClub(null)}>×</button>
 
-                        <div className="details-image-container">
-                            <img src={selectedClub.photo} alt={selectedClub.name} className="details-image" />
-                        </div>
-
-                        <div className="details-content">
-                            <div className="details-header">
-                                <h2>{selectedClub.name}</h2>
-                                <div className="club-logo">{selectedClub.logo}</div>
+                    {selectedClub && (
+                        <>
+                            <div className="details-image-container">
+                                <img src={selectedClub.photo} alt={selectedClub.name} className="details-image" />
                             </div>
 
-                            <div className="details-section">
-                                <h4>📍 Address</h4>
-                                <p>{selectedClub.address}</p>
-                            </div>
-
-                            {selectedClub.contact && (
-                                <div className="details-section">
-                                    <h4>📞 Contact</h4>
-                                    <p>{selectedClub.contact}</p>
+                            <div className="details-content">
+                                <div className="details-header">
+                                    <h2>{selectedClub.name}</h2>
+                                    <div className="club-logo">{selectedClub.logo}</div>
                                 </div>
-                            )}
 
-                            <div className="details-section">
-                                <h4>🏆 Facilities</h4>
-                                <ul>
-                                    {selectedClub.facilities.map((facility, i) => (
-                                        <li key={i}>{facility}</li>
-                                    ))}
-                                </ul>
+                                <div className="details-section">
+                                    <h4>📍 Address</h4>
+                                    <p>{selectedClub.address}</p>
+                                </div>
+
+                                {selectedClub.contact && (
+                                    <div className="details-section">
+                                        <h4>📞 Contact</h4>
+                                        <p>{selectedClub.contact}</p>
+                                    </div>
+                                )}
+
+                                <div className="details-section">
+                                    <h4>🏆 Facilities</h4>
+                                    <ul>
+                                        {selectedClub.facilities.map((facility, i) => (
+                                            <li key={i}>{facility}</li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                <div className="details-section">
+                                    <h4>💡 Tips & Recommendations</h4>
+                                    <p>{selectedClub.tips}</p>
+                                </div>
+
+                                <div className="details-section">
+                                    <h4>📝 Description</h4>
+                                    <p>{selectedClub.description}</p>
+                                </div>
                             </div>
 
-                            <div className="details-section">
-                                <h4>💡 Tips & Recommendations</h4>
-                                <p>{selectedClub.tips}</p>
+                            <div className="details-footer">
+                                <button
+                                    className="directions-button"
+                                    onClick={() => window.open(selectedClub.location, "_blank")}
+                                >
+                                    📍 Get Directions
+                                </button>
                             </div>
-
-                            <div className="details-section">
-                                <h4>📝 Description</h4>
-                                <p>{selectedClub.description}</p>
-                            </div>
-                        </div>
-
-                        <div className="details-footer">
-                            <button
-                                className="directions-button"
-                                onClick={() => window.open(selectedClub.location, "_blank")}
-                            >
-                                📍 Get Directions
-                            </button>
-                        </div>
-                    </div>
+                        </>
+                    )}
                 </div>
-            )}
+            </div>
         </div>
     );
 }

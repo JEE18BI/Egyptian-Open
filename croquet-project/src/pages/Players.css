@@ -1,25 +1,40 @@
 /* === Page Layout === */
 .players-page {
     padding: 2rem;
-    font-family: 'Arial', sans-serif;
-    color: #222;
-    background: #fdfdfd;
+    font-family: 'Poppins', sans-serif;
+    color: #1e3a8a;
+
+    background:  white; /* dark background */
 }
 
 /* === Header === */
 .players-header {
     text-align: center;
     margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: white;
+
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(75, 143, 74, 0.25);
+    transition: all 0.3s ease;
+}
+
+.players-header:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(75, 143, 74, 0.35);
 }
 
 .players-header h1 {
     font-size: 2.2rem;
     margin-bottom: 0.5rem;
+        color: #1e3a8a;
+
+    text-shadow: 0 0 10px rgba(75,143,74,0.4);
 }
 
 .players-intro {
     font-size: 1.1rem;
-    color: #555;
+    color: #2980b9;
 }
 
 /* === Country Section === */
@@ -29,7 +44,8 @@
 
 .country-header {
     margin-bottom: 1rem;
-    border-left: 5px solid #c8102e; /* Egyptian Open theme red */
+    border-left: 5px solid   #2980b9;
+    /* green accent */
     padding-left: 0.75rem;
 }
 
@@ -38,6 +54,8 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: #1e3a8a;
+
 }
 
 /* === Players Grid === */
@@ -52,13 +70,15 @@
     position: relative;
     overflow: hidden;
     border-radius: 12px;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
-    transition: transform 0.2s ease;
-    background: white;
+    background: #1a1a1a;
+    box-shadow: 0 5px 15px rgba(75,143,74,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
 }
 
 .player-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-5px) scale(1.02);
+    box-shadow: 0 15px 40px rgba(75,143,74,0.4);
 }
 
 /* === Player Image === */
@@ -72,6 +92,11 @@
     object-fit: cover;
     display: block;
     border-radius: 12px;
+    transition: transform 0.3s ease;
+}
+
+.player-card:hover .player-image {
+    transform: scale(1.05);
 }
 
 /* === Overlay with name/number === */
@@ -81,7 +106,7 @@
     left: 0;
     right: 0;
     background: rgba(0,0,0,0.6);
-    color: white;
+    color: #eee;
     padding: 0.5rem;
     font-size: 0.9rem;
     display: flex;
@@ -92,6 +117,7 @@
 .player-number {
     font-weight: bold;
     font-size: 0.85rem;
+    color: #4B8F4A;
 }
 
 .player-name {
@@ -105,12 +131,10 @@
     text-align: center;
     margin-top: 2rem;
     font-size: 1rem;
-    color: #333;
+    color: #ccc;
 }
 
 /* ================== RESPONSIVE STYLES ================== */
-
-/* Tablets (<= 992px) */
 @media (max-width: 992px) {
     .players-container {
         grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -125,7 +149,6 @@
     }
 }
 
-/* Mobile (<= 768px) */
 @media (max-width: 768px) {
     .players-container {
         grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
@@ -154,7 +177,6 @@
     }
 }
 
-/* Small phones (<= 480px) */
 @media (max-width: 480px) {
     .players-container {
         grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));

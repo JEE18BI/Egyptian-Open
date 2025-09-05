@@ -1,30 +1,39 @@
-/* Help.css */
+/* === Help Page - Dark Theme === */
 .help-page {
     padding: 2rem;
     max-width: 1000px;
     margin: 0 auto;
     min-height: 80vh;
-    background: linear-gradient(to bottom, #f8f9fa 0%, #ffffff 100%);
+    background: white; /* dark background */
+    color: #1e3a8a;
+
+    font-family: 'Poppins', sans-serif;
 }
 
+/* === Header === */
 .help-header {
     text-align: center;
     margin-bottom: 3rem;
     position: relative;
+    padding: 2rem 0;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(75,143,74,0.25);
+    transition: all 0.3s ease;
 }
 
-.header-content {
-    position: relative;
-    padding: 2rem 0;
+.help-header:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(75,143,74,0.35);
 }
 
 .help-header h1 {
     font-size: 2.8rem;
-    color: #1a472a;
+    color: #1e3a8a;
+    margin-left: 20px;
     margin-bottom: 1rem;
     font-weight: 700;
-    position: relative;
-    display: inline-block;
+    text-shadow: 0 0 10px rgba(75,143,74,0.4);
 }
 
 .header-emoji {
@@ -42,20 +51,23 @@
 .decorative-line {
     width: 100px;
     height: 4px;
-    background: linear-gradient(90deg, #1a472a, #ffd700);
-    margin: 0 auto 1.5rem;
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
+    margin-left: 390px;
+    margin-bottom: 20px;
     border-radius: 2px;
 }
 
 .help-header p {
-    color: #666;
+    color: #2980b9;
+
+
     font-size: 1.2rem;
     max-width: 600px;
     margin: 0 auto;
     line-height: 1.6;
 }
 
-/* Section Styles */
+/* === Sections === */
 .contacts-section,
 .faq-section {
     margin-bottom: 4rem;
@@ -65,12 +77,11 @@
 .section-header {
     text-align: center;
     margin-bottom: 2.5rem;
-    position: relative;
 }
 
 .section-header h2 {
     font-size: 2.2rem;
-    color: #1a472a;
+    color: #1e3a8a;
     margin-bottom: 0.8rem;
     font-weight: 600;
     position: relative;
@@ -85,18 +96,18 @@
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(90deg, #1a472a, #ffd700);
+    background: linear-gradient(90deg, #3b82f6, #06b6d4);
     border-radius: 2px;
 }
 
 .section-header p {
-    color: #666;
+    color: #ccc;
     font-size: 1.1rem;
     max-width: 500px;
     margin: 0 auto;
 }
 
-/* Contact Cards */
+/* === Contact Cards === */
 .contact-cards {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -108,7 +119,7 @@
     background: white;
     padding: 2rem;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 10px 30px rgba(75,143,74,0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -116,6 +127,7 @@
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     position: relative;
     overflow: hidden;
+    cursor: pointer;
 }
 
 .contact-card:before {
@@ -125,7 +137,7 @@
     left: 0;
     width: 100%;
     height: 5px;
-    background: linear-gradient(90deg, #1a472a, #ffd700);
+    background: linear-gradient(90deg, #3498db, #2ecc71);
     transform: scaleX(0);
     transform-origin: left;
     transition: transform 0.4s ease;
@@ -133,7 +145,7 @@
 
 .contact-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 15px 40px rgba(75,143,74,0.35);
 }
 
 .contact-card:hover:before {
@@ -146,7 +158,7 @@
     right: -20px;
     width: 60px;
     height: 60px;
-    background: rgba(26, 71, 42, 0.05);
+    background: rgba(75,143,74,0.05);
     border-radius: 50%;
     z-index: 0;
 }
@@ -155,28 +167,30 @@
     font-size: 3rem;
     margin-bottom: 1.2rem;
     z-index: 1;
+    color: #4B8F4A;
 }
 
 .contact-info h3 {
-    color: #1a472a;
+    color: #2980b9;
+
     margin-bottom: 0.5rem;
     font-size: 1.3rem;
     font-weight: 600;
 }
 
 .contact-info p {
-    color: #666;
+    color: #ccc;
     font-size: 1.2rem;
     margin-bottom: 1.5rem;
     font-weight: 500;
 }
 
 .call-button {
-    background: linear-gradient(135deg, #1a472a 0%, #2d704a 100%);
-    color: white;
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+
+    color: #fff;
     padding: 0.8rem 1.8rem;
     border-radius: 30px;
-    text-decoration: none;
     font-weight: 600;
     transition: all 0.3s ease;
     border: none;
@@ -184,20 +198,20 @@
     display: flex;
     align-items: center;
     gap: 0.5rem;
-    box-shadow: 0 4px 15px rgba(26, 71, 42, 0.3);
+    box-shadow: 0 4px 15px rgba(75,143,74,0.3);
 }
 
 .call-button:hover {
-    background: linear-gradient(135deg, #2d704a 0%, #1a472a 100%);
+
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(26, 71, 42, 0.4);
+    box-shadow: 0 6px 20px rgba(75,143,74,0.4);
 }
 
 .phone-icon {
     font-size: 1.2rem;
 }
 
-/* FAQ Styles */
+/* === FAQ Styles === */
 .faq-list {
     display: flex;
     flex-direction: column;
@@ -207,7 +221,7 @@
 .faq-item {
     background: white;
     border-radius: 16px;
-    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 5px 20px rgba(75,143,74,0.2);
     overflow: hidden;
     transition: all 0.3s ease;
     display: flex;
@@ -217,13 +231,15 @@
 }
 
 .faq-item.active {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.12);
+    box-shadow: 0 8px 30px rgba(75,143,74,0.35);
 }
 
 .faq-icon {
     font-size: 1.8rem;
     margin-top: 0.3rem;
     flex-shrink: 0;
+    color: #2980b9;
+
 }
 
 .faq-content {
@@ -241,7 +257,7 @@
     cursor: pointer;
     font-size: 1.1rem;
     font-weight: 600;
-    color: #1a472a;
+    color: #2980b9;
     padding: 0;
     margin-bottom: 0.5rem;
 }
@@ -277,29 +293,30 @@
 }
 
 .answer-content p {
-    color: #666;
+    color: black;
     line-height: 1.7;
     font-size: 1.05rem;
     margin: 0;
     padding: 0.8rem 0;
-    border-top: 1px dashed #eee;
+    border-top: 1px dashed rgba(75,143,74,0.3);
 }
 
-/* Info Section */
+/* === Info Section === */
 .info-section {
     margin-top: 3rem;
     padding: 2rem 0;
 }
 
 .info-card {
-    background: linear-gradient(135deg, #1a472a 0%, #2d704a 100%);
+    background: linear-gradient(90deg, #3498db, #2ecc71);
+
     color: white;
     padding: 2.5rem;
     border-radius: 20px;
     display: flex;
     align-items: center;
     gap: 1.5rem;
-    box-shadow: 0 10px 30px rgba(26, 71, 42, 0.2);
+    box-shadow: 0 10px 30px rgba(75,143,74,0.2);
 }
 
 .info-icon {
@@ -318,53 +335,27 @@
     opacity: 0.9;
 }
 
-/* Responsive Design */
+/* === Responsive Design === */
 @media (max-width: 768px) {
-    .help-page {
-        padding: 1.2rem;
-    }
-
-    .help-header h1 {
-        font-size: 2.2rem;
-    }
-
-    .contact-cards {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-    }
-
-    .contact-card {
-        padding: 1.5rem;
-    }
-
-    .faq-item {
-        padding: 1.2rem;
-        flex-direction: column;
-        text-align: center;
-        gap: 0.8rem;
-    }
-
-    .faq-icon {
-        margin-top: 0;
-    }
-
-    .info-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 2rem 1.5rem;
-    }
+    .help-page { padding: 1.2rem; }
+    .help-header h1 { font-size: 2.2rem; }
+    .contact-cards { grid-template-columns: 1fr; gap: 1.5rem; }
+    .contact-card { padding: 1.5rem; }
+    .faq-item { padding: 1.2rem; flex-direction: column; text-align: center; gap: 0.8rem; }
+    .faq-icon { margin-top: 0; }
+    .info-card { flex-direction: column; text-align: center; padding: 2rem 1.5rem; }
 }
 
 @media (max-width: 480px) {
-    .help-header h1 {
-        font-size: 1.9rem;
-    }
+    .help-header h1 { font-size: 1.9rem; }
+    .section-header h2 { font-size: 1.7rem; }
+    .contact-info h3 { font-size: 1.2rem;
+        .contact-info h3 { font-size: 1.2rem; }
+        .contact-info p { font-size: 1rem; }
+        .call-button { padding: 0.7rem 1.5rem; font-size: 0.95rem; }
+        .faq-question { font-size: 1rem; }
+        .faq-answer { font-size: 0.95rem; }
+        .info-content h3 { font-size: 1.2rem; }
+        .info-content p { font-size: 0.95rem; }}}
 
-    .section-header h2 {
-        font-size: 1.7rem;
-    }
 
-    .contact-info h3 {
-        font-size: 1.2rem;
-    }
-}

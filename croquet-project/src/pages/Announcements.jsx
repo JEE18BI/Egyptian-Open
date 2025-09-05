@@ -42,6 +42,7 @@ export default function Announcements() {
         }, {});
         setGrouped(groupedMap);
 
+        // Open the first day by default
         if (Object.keys(groupedMap).length > 0 && !activeDay) {
             setActiveDay(Object.keys(groupedMap)[0]);
         }
@@ -51,12 +52,22 @@ export default function Announcements() {
         setActiveDay(activeDay === day ? null : day);
     };
 
+    // Format the Day label nicely
+    const formatDayLabel = (day) => {
+        const match = day.match(/^(\d+)/); // extract leading number if exists
+        if (match) {
+            const num = match[1];
+            return `Day ${num} – ${day}`;
+        }
+        return day;
+    };
+
     if (isLoading) {
         return (
             <div className="announcements-page">
                 <div className="loading-container">
                     <div className="loading-spinner"></div>
-                    <p>Loading announcements...</p>
+
                 </div>
             </div>
         );
@@ -70,75 +81,46 @@ export default function Announcements() {
             </div>
 
             <div className="announcements-wrapper">
-                {/* Left Column - Tournament Details */}
+                {/* Left Column */}
                 <div className="tournament-details-column">
-                    <h2>🏆 Tournament Details</h2>
-
-                    <div className="tournament-section">
-                        <h3>🎾 Matches</h3>
-                        <ul>
-                            <li>Matches at 5 clubs, 12 courts.</li>
-                            <li>Block play: 5 days, each match best of 3.</li>
-                        </ul>
-                    </div>
-
-                    <div className="tournament-section">
-                        <h3>⏰ Schedule</h3>
-                        <ul>
-                            <li>Start at 8:00 AM; two clubs with evening rounds.</li>
-                            <li>Round of 32 & 16: Day 6</li>
-                            <li>Quarterfinals & Semifinals: Day 7</li>
-                            <li>Finals: Day 8 (best of 5)</li>
-                        </ul>
-                    </div>
-
-                    <div className="tournament-section">
-                        <h3>🚌 Transportation</h3>
-                        <ul>
-                            <li>Buses: Federation → Heliopolis & El-Zohor clubs</li>
-                            <li>Shooting Club: 5 minutes from Federation Courts</li>
-                        </ul>
-                    </div>
-
-                    <div className="tournament-section">
-                        <h3>🍽️ Food</h3>
-                        <ul>
-                            <li>Daily meal orders arranged for the following day.</li>
-                            <li>Location & menu decided collectively.</li>
-                        </ul>
-                    </div>
-                </div>
-
-                {/* Right Column - Announcements */}
-                <div className="announcements-column">
-                    <h2>📌 Announcements</h2>
-
-                    {/* Hotel Announcement Block */}
+                    {/* Hotel Announcement */}
                     <div className="hotel-announcement">
                         <h3>🏨 Official Hotel Offer</h3>
-                        <p>
+                        <p className="pleased">
                             We are pleased to offer you exclusive special rates for the upcoming{" "}
                             <strong>Champion 2025 event</strong> at{" "}
                             <strong>President Hotel</strong>.
                         </p>
                         <ul>
-                            <li>Deluxe Single Room: <strong>$80</strong> per night</li>
-                            <li>Deluxe Double Room: <strong>$90</strong> per night</li>
+                            <li>
+                                Deluxe Single Room: <strong>$80</strong> per night
+                            </li>
+                            <li>
+                                Deluxe Double Room: <strong>$90</strong> per night
+                            </li>
                             <li>Includes breakfast, service charge & taxes</li>
                         </ul>
-                        <p>Reservation Code: <strong>EC-25</strong></p>
-                        <p>
+                        <p style={{ color: "black" }}>
+                            Reservation Code: <strong>EC-25</strong>
+                        </p>
+                        <p style={{color:"black"}}>
                             📧 Booking Mail:{" "}
-                            <a href="mailto:bookings@thepresidentcairo.com">
+                            <a style={{    color: "#1e3a8a"
+                            }} href="mailto:bookings@thepresidentcairo.com">
                                 bookings@thepresidentcairo.com
                             </a>
                         </p>
-                        <p>
-                            ❗ Cancellations: Free until 14 days before arrival. Within 48h or “no-show”, full charge applies.
+                        <p style={{ color: "black" }}>
+
+                        ❗ Cancellations: Free until 14 days before arrival. Within 48h or
+                            “no-show”, full charge applies.
                         </p>
                     </div>
+                </div>
 
-                    {/* Daily Announcements from CSV */}
+                {/* Right Column */}
+                <div className="announcements-column">
+                    <h2>📌 Announcements</h2>
                     {Object.keys(grouped).length === 0 ? (
                         <p>No announcements at the moment.</p>
                     ) : (
@@ -148,10 +130,10 @@ export default function Announcements() {
                                 className={`day-section ${activeDay === day ? "active" : ""}`}
                             >
                                 <div
-                                    className="day-header"
+                                    className={`day-header ${activeDay === day ? "active" : ""}`}
                                     onClick={() => toggleDay(day)}
                                 >
-                                    <h3>{day}</h3>
+                                    <h3 className="Day">{formatDayLabel(day)}</h3>
                                     <span className="toggle-icon">
                                         {activeDay === day ? "−" : "+"}
                                     </span>

@@ -10,6 +10,7 @@ export default function LiveMatches() {
     const [isLoading, setIsLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
 
+
     useEffect(() => {
         setIsLoading(true);
         const matchesUrl =
@@ -47,9 +48,7 @@ export default function LiveMatches() {
         }, {});
         setGroupedMatches(grouped);
 
-        if (Object.keys(grouped).length > 0 && !activeDay) {
-            setActiveDay(Object.keys(grouped)[0]);
-        }
+
     }, [matches]);
 
     const toggleDay = (day) => {
@@ -63,24 +62,25 @@ export default function LiveMatches() {
     if (isLoading) {
         return (
             <div className="live-matches-page">
-                <div className="loading-container">
-                    <div className="loading-spinner"></div>
-                    <p>Loading matches...</p>
+                <div className="loader-overlay">
+                    <div className="loader-spinner"></div>
+
                 </div>
             </div>
         );
     }
 
+
     return (
         <div className="live-matches-page">
             <div className="matches-header">
-                <h1>🎾 Live Matches</h1>
+                <h1>Matches</h1>
                 <p>Check today’s schedule and search for your match</p>
 
                 {/* Search box */}
                 <input
                     type="text"
-                    placeholder="Search by player name..."
+                    placeholder="Search by player or club name..."
                     value={searchTerm}
                     onChange={handleSearch}
                     className="match-search-input"
@@ -88,9 +88,11 @@ export default function LiveMatches() {
             </div>
 
             {Object.entries(groupedMatches).map(([day, matches]) => {
-                // Apply search filter
-                const filteredMatches = matches.filter((m) =>
-                    m.match.toLowerCase().includes(searchTerm.toLowerCase())
+                // Apply search filter: match name OR club name
+                const filteredMatches = matches.filter(
+                    (m) =>
+                        m.match.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                        m.club.toLowerCase().includes(searchTerm.toLowerCase())
                 );
 
                 if (filteredMatches.length === 0) return null;
@@ -100,8 +102,8 @@ export default function LiveMatches() {
                         <div className="day-header" onClick={() => toggleDay(day)}>
                             <h2>{day}</h2>
                             <span className="toggle-icon">
-                                {activeDay === day ? "−" : "+"}
-                            </span>
+                    {activeDay === day ? "−" : "+"}
+                </span>
                         </div>
 
                         {activeDay === day && (
@@ -128,10 +130,10 @@ export default function LiveMatches() {
                                 </table>
                             </div>
                         )}
-
                     </div>
                 );
             })}
+
         </div>
     );
 }
