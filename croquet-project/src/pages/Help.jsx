@@ -4,9 +4,9 @@ import "./Help.css";
 
 export default function Help() {
     const contacts = [
-        { name: "Mohamed Hassan (Tournament Director)", phone: "+201002597737", icon: "👑" },
-        { name: "Dr Mohamed Raslan", phone: "+201005252523", icon: "🩺" },
-        {name: "Jana Mohamed (Emergency)", phone: "+201060676156", icon: "⚡" },
+        { name: "Dr. Mohamed Raslan (Tournament Director)", phone: "+201002597737", icon: "👑" },
+        { name: "Mohamed Hassan (Tournament Manager)", phone: "+201005252523", icon: "🧑‍💼" },
+        {name: "Jana Mohamed (Tournament Assistant Manager)", phone: "+201060676156", icon: "👩‍💼" },
         { name: "Shooting Club Contact: Ghada", phone: "+01007128666", icon: "🏹" },
         { name: "El-Zohor Club Contact: Salah Hassan", phone: "+201141191118", icon: "🌅" },
         { name: "Heliopolis Club Contact", phone: "", icon: "🌳" } // Blank for now
