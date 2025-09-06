@@ -1,15 +1,21 @@
-// LiveMatches.jsx
 import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import "./LiveMatches.css";
 
 export default function LiveMatches() {
     const [matches, setMatches] = useState([]);
-    const [groupedMatches, setGroupedMatches] = useState({});
+    const [groupedMatchesByClub, setGroupedMatchesByClub] = useState({});
+    const [activeClub, setActiveClub] = useState(null);
     const [activeDay, setActiveDay] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [searchTerm, setSearchTerm] = useState("");
+    const [playerMap, setPlayerMap] = useState({});
+    const [showPlayerPopup, setShowPlayerPopup] = useState(true);
 
+    // Reset popup when search changes
+    useEffect(() => {
+        setShowPlayerPopup(true);
+    }, [searchTerm]);
 
     useEffect(() => {
         setIsLoading(true);
@@ -22,62 +28,85 @@ export default function LiveMatches() {
             skipEmptyLines: true,
             transformHeader: (header) => header.trim(),
             complete: (results) => {
-                const filtered = results.data.filter(
-                    (row) => row.DAY || row.MATCH || row.TIME || row.CLUB || row.COURT
-                );
+                const filtered = results.data.filter((row) => row.MATCH?.trim());
                 setMatches(filtered);
                 setIsLoading(false);
+
+                // Build player map with time
+                const tempPlayerMap = {};
+                filtered.forEach((row) => {
+                    const players = row.MATCH.split(",").map((p) => p.trim());
+                    players.forEach((player) => {
+                        if (!tempPlayerMap[player]) tempPlayerMap[player] = [];
+                        tempPlayerMap[player].push({
+                            club: row.CLUB?.trim(),
+                            day: row.DAY?.trim(),
+                            time: row.TIME?.trim(),
+                        });
+                    });
+                });
+                setPlayerMap(tempPlayerMap);
             },
         });
     }, []);
 
     useEffect(() => {
         const grouped = matches.reduce((acc, item) => {
-            const day = item.DAY?.trim() || "Other Matches";
-            const match = item.MATCH?.trim() || "";
-            if (match) {
-                acc[day] = acc[day] || [];
-                acc[day].push({
-                    match,
-                    time: item.TIME?.trim() || "",
-                    club: item.CLUB?.trim() || "",
-                    court: item.COURT?.trim() || "",
-                });
-            }
+            const club = item.CLUB?.trim() || "Other Clubs";
+            const day = item.DAY?.trim() || "1";
+            const block = item.BLOCK?.trim();
+            const match = item.MATCH?.trim();
+            if (!match) return acc;
+
+            acc[club] = acc[club] || {};
+            acc[club][day] = acc[club][day] || { blocks: new Set(), matches: [] };
+            if (block) acc[club][day].blocks.add(block);
+
+            acc[club][day].matches.push({
+                match,
+                time: item.TIME?.trim() || "",
+                club,
+                court: item.COURT?.trim() || "",
+                block: block || "",
+            });
             return acc;
         }, {});
-        setGroupedMatches(grouped);
 
+        Object.values(grouped).forEach((clubDays) => {
+            Object.values(clubDays).forEach((dayObj) => {
+                dayObj.blocks = Array.from(dayObj.blocks).sort();
+            });
+        });
 
+        setGroupedMatchesByClub(grouped);
     }, [matches]);
 
-    const toggleDay = (day) => {
-        setActiveDay(activeDay === day ? null : day);
-    };
+    const handleSearch = (e) => setSearchTerm(e.target.value);
 
-    const handleSearch = (e) => {
-        setSearchTerm(e.target.value);
-    };
+    // Compute player summary dynamically
+    const playerSummary = searchTerm.trim()
+        ? Object.entries(playerMap)
+            .filter(([player]) =>
+                player.toLowerCase().includes(searchTerm.toLowerCase())
+            )
+            .flatMap(([, matches]) => matches)
+        : [];
 
     if (isLoading) {
         return (
             <div className="live-matches-page">
                 <div className="loader-overlay">
                     <div className="loader-spinner"></div>
-
                 </div>
             </div>
         );
     }
-
 
     return (
         <div className="live-matches-page">
             <div className="matches-header">
                 <h1>Matches</h1>
                 <p>Check today’s schedule and search for your match</p>
-
-                {/* Search box */}
                 <input
                     type="text"
                     placeholder="Search by player or club name..."
@@ -87,53 +116,127 @@ export default function LiveMatches() {
                 />
             </div>
 
-            {Object.entries(groupedMatches).map(([day, matches]) => {
-                // Apply search filter: match name OR club name
-                const filteredMatches = matches.filter(
-                    (m) =>
-                        m.match.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                        m.club.toLowerCase().includes(searchTerm.toLowerCase())
-                );
-
-                if (filteredMatches.length === 0) return null;
-
-                return (
-                    <div key={day} className="day-section">
-                        <div className="day-header" onClick={() => toggleDay(day)}>
-                            <h2>{day}</h2>
-                            <span className="toggle-icon">
-                    {activeDay === day ? "−" : "+"}
-                </span>
-                        </div>
-
-                        {activeDay === day && (
-                            <div className="matches-table-container">
-                                <table className="matches-table">
-                                    <thead>
-                                    <tr>
-                                        <th>Time</th>
-                                        <th>Match</th>
-                                        <th>Club</th>
-                                        <th>Court</th>
-                                    </tr>
-                                    </thead>
-                                    <tbody>
-                                    {filteredMatches.map((m, i) => (
-                                        <tr key={i}>
-                                            <td>{m.time}</td>
-                                            <td>{m.match}</td>
-                                            <td>{m.club}</td>
-                                            <td>{m.court}</td>
-                                        </tr>
-                                    ))}
-                                    </tbody>
-                                </table>
-                            </div>
-                        )}
+            {/* Player summary popup */}
+            {/* Player summary popup */}
+            {playerSummary.length > 0 && showPlayerPopup && (
+                <div className="player-popup">
+                    <div className="player-popup-header">
+                        <h3>Your Schedule</h3>
+                        <button
+                            className="close-popup-btn"
+                            onClick={() => setShowPlayerPopup(false)}
+                        >
+                            Close
+                        </button>
                     </div>
-                );
-            })}
 
+                    <div className="player-popup-days">
+                        {Object.entries(
+                            playerSummary.reduce((acc, m) => {
+                                if (!acc[m.day]) acc[m.day] = [];
+                                acc[m.day].push(m);
+                                return acc;
+                            }, {})
+                        ).map(([day, matches]) => (
+                            <div key={day} className="player-day-card">
+                                <div className="player-day-title">Day {day}</div>
+                                <div className="player-day-matches">
+                                    {matches.map((m, i) => (
+                                        <div key={i} className="player-match-item">
+                                            <span className="match-club">{m.club}</span>
+                                            <span className="match-time">{m.time}</span>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+
+
+            {/* Clubs and matches */}
+            {Object.entries(groupedMatchesByClub).map(([club, days]) => (
+                <div key={club} className="club-section">
+                    <div
+                        className={`club-header ${activeClub === club ? "active" : ""}`}
+                        onClick={() =>
+                            setActiveClub(activeClub === club ? null : club)
+                        }
+                    >
+                        <span>{club}</span>
+                        <span className="toggle-icon">
+                            {activeClub === club ? "−" : "+"}
+                        </span>
+                    </div>
+
+                    {activeClub === club &&
+                        Object.entries(days).map(([day, dayObj]) => {
+                            const filteredMatches = dayObj.matches.filter(
+                                (m) =>
+                                    m.match.toLowerCase().includes(searchTerm.toLowerCase()) ||
+                                    m.club.toLowerCase().includes(searchTerm.toLowerCase())
+                            );
+
+                            if (filteredMatches.length === 0) return null;
+
+                            const blockText =
+                                dayObj.blocks.length > 0
+                                    ? ` - Blocks: ${dayObj.blocks.join(", ")}`
+                                    : "";
+
+                            return (
+                                <div key={day} className="day-section">
+                                    <div
+                                        className={`day-header ${
+                                            activeDay === `${club}-${day}` ? "active" : ""
+                                        }`}
+                                        onClick={() =>
+                                            setActiveDay(
+                                                activeDay === `${club}-${day}`
+                                                    ? null
+                                                    : `${club}-${day}`
+                                            )
+                                        }
+                                    >
+                                        <span>{`Day ${day}${blockText}`}</span>
+                                        <span className="toggle-icon">
+                                            {activeDay === `${club}-${day}` ? "−" : "+"}
+                                        </span>
+                                    </div>
+
+                                    {activeDay === `${club}-${day}` && (
+                                        <div className="matches-table-container">
+                                            <table className="matches-table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Time</th>
+                                                    <th>Match</th>
+                                                    <th>Club</th>
+                                                    <th>Court</th>
+                                                    <th>Block</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {filteredMatches.map((m, i) => (
+                                                    <tr key={i}>
+                                                        <td>{m.time}</td>
+                                                        <td>{m.match}</td>
+                                                        <td>{m.club}</td>
+                                                        <td>{m.court}</td>
+                                                        <td>{m.block}</td>
+                                                    </tr>
+                                                ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    )}
+                                </div>
+                            );
+                        })}
+                </div>
+            ))}
         </div>
     );
 }
