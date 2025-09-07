@@ -12,28 +12,53 @@ export default function Clubs() {
     const [selectedClub, setSelectedClub] = useState(null);
 
     const clubsData = [
+
         {
             id: 1,
             name: "El-Gezira Club",
             logo: "🏛️",
             photo: club5,
-            description: "One of Egypt's most prestigious sporting clubs with excellent croquet facilities.",
+            description: "One of Egypt's most prestigious sporting clubs with excellent croquet facilities. Just a 5-minute walk from the Federation Courts, together forming the heart of croquet in Zamalek.",
             address: "Zamalek, Cairo",
-            facilities: ["3 Croquet Courts", "Club Restaurant & Cafeteria", "Air-conditioned Players’ Lounge","Close Bathrooms & Locker Rooms"],
-            tips: "The main restaurant is highly recommended and located right next to the courts.",
+            facilities: [
+                "3 Croquet Courts",
+                "Club Restaurant & Cafeteria",
+                "Air-conditioned Players’ Lounge",
+                "Close Bathrooms & Locker Rooms"
+            ],
+            tips: "The main restaurant is highly recommended and located right next to the courts. Also very close to Federation Courts for even more food options.",
+            food: [
+                "🍽️ Club Restaurant – inside Gezirah Club, right by the courts",
+                "🥤 Cafeteria – snacks & drinks at the courts",
+                "🍔 McDonald’s & other burger places – on the short walk between Federation and Gezirah"
+            ],
             location : "https://maps.app.goo.gl/32bXoRF1nbmQE5jo7?g_st=ipc"
-        },
+
+
+},
         {
             id: 2,
             name: "Federation Courts",
             logo: "🎯",
             photo: club2,
-            description: "Official federation courts with international standard facilities.",
+            description: "Located just a 5-minute walk from El-Gezira Club, the Federation Courts are part of the same sporting hub. They feature international-standard facilities and host many top-level competitive matches.",
             address: "Zamalek, Cairo",
-            facilities: ["3 Croquet Courts", "Cafeteria", "Air-conditioned Players’ Lounge","Close Bathrooms & Locker Rooms"],
-            tips: "Perfect location for competitive matches with professional setup.",
+            facilities: [
+                "3 Croquet Courts",
+                "Cafeteria",
+                "Air-conditioned Players’ Lounge",
+                "Close Bathrooms & Locker Rooms"
+            ],
+            tips: "You'll find plenty of People to Help you Everyday!",
+            food: [
+                "🍽️ Club Restaurant – inside Gezirah Club, a 5 min walk",
+                "☕ Orangette – café right in front of Federation gates",
+                "🥤 Federation Cafeteria – snacks & drinks at the courts",
+                "🍔 McDonald’s & other burger places – on the short walk between Federation and Gezirah"
+            ],
             location: "https://maps.app.goo.gl/32bXoRF1nbmQE5jo7?g_st=ipc"
         },
+
         {
             id: 3,
             name: "Heliopolis Club",
@@ -41,9 +66,19 @@ export default function Clubs() {
             photo: club1,
             description: "Historic club with beautiful surroundings and well-maintained courts.",
             address: "El-Shorouk, Cairo",
-            contact: "",
-            facilities: ["2 Croquet Courts", "Club Restaurant & Cafeteria", "Air-conditioned Players’ Lounge","Close Bathrooms & Locker Rooms"],
-            tips: "Busses are going to leave from the Federation Courts.",
+            facilities: [
+                "2 Croquet Courts",
+                "Club Restaurant & Cafeteria",
+                "Air-conditioned Players’ Lounge",
+                "Close Bathrooms & Locker Rooms"
+            ],
+            tips: "Abeer Mourad is going to take Care of You!",
+            food: [
+                "🥗 Club Restaurant – classic meals",
+                "Cafeteria - Just Order!",
+                "🥪 Costa Coffee – drinks & sandwiches",
+
+            ],
             location: "https://maps.app.goo.gl/CG3b8aPF2iFNWUcF9?g_st=ipc"
         },
         {
@@ -51,24 +86,47 @@ export default function Clubs() {
             name: "Shooting Club",
             logo: "🎯",
             photo: club3,
-            description: "Multi-sport club known for its excellent facilities and organization.",
+            description: "One of Cairo’s most vibrant sporting hubs. Renowned for its excellent organization and welcoming atmosphere, the Shooting Club offers some of the best-maintained croquet courts in Egypt. With a strong tradition of hosting major tournaments, it remains a favorite destination for both players and fans of the sport.",
             address: "Dokki, Cairo",
-            contact: "+20 2 3336 3456",
-            facilities: ["2 Croquet Courts", "Cafeteria & Nearby Fast Food Restaurants", "Air-conditioned Players’ Lounge", "Bathrooms & Locker Rooms"],
-            tips: "La Poire (just in front of the courts) and Bon Appetit are popular choices for dining.",
+            contact: "+20 100 712 8666",
+            facilities: [
+                "2 Croquet Courts",
+                "Cafeteria & Nearby Fast Food Restaurants",
+                "Air-conditioned Players’ Lounge",
+                "Bathrooms & Locker Rooms"
+            ],
+            tips: "Ghada and Mervat are super helpful! If anything, just look for them.",
+            food: [
+                "🥪 Bon Appetit – sandwiches",
+                "🍗 El Lido – shawerma & chicken sandwiches",
+                "🍔 Mince – burgers",
+                "🥤 La Poire – drinks & food (in front of courts)",
+                "🌯 Shawerma place – right next to courts",
+                "🥗 Gourmet Salad – healthy option"
+            ],
             location: "https://maps.app.goo.gl/KdoJUsi4ZkruQfEn9?g_st=ipc"
         },
         {
             id: 5,
-            name: "El-Zohor Club",
+            name: "El-Zohour Club",
             logo: "🌅",
             photo: club4,
             description: "Exclusive club with top-notch amenities and professional staff.",
             address: "Nasr City, Cairo",
-            contact: "",
-            facilities: ["2 Croquet Courts", "Cafeteria", "Air-conditioned Players’ Lounge", "Bathrooms & Locker Rooms"],
-            tips: "Check the schedule for special events during the tournament.",
-            location:"https://maps.app.goo.gl/sCMjZJUe5TthFePU8?g_st=ipc"
+            facilities: [
+                "2 Croquet Courts",
+                "Cafeteria",
+                "Air-conditioned Players’ Lounge",
+                "Bathrooms & Locker Rooms"
+            ],
+            tips: "Need something? Just Ask Moe Karem or Salah Hassan",
+            food: [
+                "🥪 Zooba – Egyptian street food",
+                "🍕 Pizza Hut – quick option nearby",
+                "☕ Starbucks – coffee & pastries",
+                "🥘 Club Cafeteria – easy meals inside"
+            ],
+            location: "https://maps.app.goo.gl/sCMjZJUe5TthFePU8?g_st=ipc"
         }
     ];
 
@@ -97,11 +155,10 @@ export default function Clubs() {
                 ))}
             </div>
 
-            {/* Modal overlay with conditional active class */}
+            {/* Modal overlay */}
             <div className={`club-details-overlay ${selectedClub ? 'active' : ''}`}
                  onClick={() => setSelectedClub(null)}>
                 <div className="club-details" onClick={(e) => e.stopPropagation()}>
-                    {/* Close button */}
                     <button className="close-button" onClick={() => setSelectedClub(null)}>×</button>
 
                     {selectedClub && (
@@ -136,6 +193,17 @@ export default function Clubs() {
                                         ))}
                                     </ul>
                                 </div>
+
+                                {selectedClub.food && (
+                                    <div className="details-section">
+                                        <h4>🍴 Food Options Nearby</h4>
+                                        <ul>
+                                            {selectedClub.food.map((place, i) => (
+                                                <li key={i}>{place}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                )}
 
                                 <div className="details-section">
                                     <h4>💡 Tips & Recommendations</h4>

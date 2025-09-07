@@ -56,6 +56,7 @@ export default function LiveMatches() {
             const day = item.DAY?.trim() || "1";
             const block = item.BLOCK?.trim();
             const match = item.MATCH?.trim();
+            const score = item.SCORE?.trim();
             if (!match) return acc;
 
             acc[club] = acc[club] || {};
@@ -68,6 +69,7 @@ export default function LiveMatches() {
                 club,
                 court: item.COURT?.trim() || "",
                 block: block || "",
+                score: score || "",
             });
             return acc;
         }, {});
@@ -114,6 +116,15 @@ export default function LiveMatches() {
                     onChange={handleSearch}
                     className="match-search-input"
                 />
+                <div className="search-steps">
+                    <h4>How to Search for Your Matches:</h4>
+                    <ul>
+                        <li>Enter the <strong>full player name</strong> in the search box above.</li>
+                        <li>A <strong>summary</strong> will appear showing each day and which club the player will be on.</li>
+                        <li>Click on the <strong>club name and Day</strong> below to expand and view all match details.</li>
+                    </ul>
+                </div>
+
             </div>
 
             {/* Player summary popup */}
@@ -216,6 +227,7 @@ export default function LiveMatches() {
                                                     <th>Club</th>
                                                     <th>Court</th>
                                                     <th>Block</th>
+                                                    <th>Score</th>
                                                 </tr>
                                                 </thead>
                                                 <tbody>
@@ -226,6 +238,7 @@ export default function LiveMatches() {
                                                         <td>{m.club}</td>
                                                         <td>{m.court}</td>
                                                         <td>{m.block}</td>
+                                                        <td>{m.score}</td>
                                                     </tr>
                                                 ))}
                                                 </tbody>

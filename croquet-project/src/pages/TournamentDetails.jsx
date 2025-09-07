@@ -11,16 +11,16 @@ export default function TournamentDetails() {
                     <h3>🎾 Matches</h3>
                     <ul>
                         <li>Matches at 5 clubs, 12 courts.</li>
-                        <li>Block play: 5 days, each match best of 3.</li>
+                        <li>Block play: 5 days, each match is a long game (1 Game of 10 points)</li>
                     </ul>
                 </div>
 
                 <div className="tournament-card">
                     <h3>⏰ Schedule</h3>
                     <ul>
-                        <li>Start at 8:00 AM; two clubs with evening rounds.</li>
-                        <li>Round of 32 & 16: Day 6</li>
-                        <li>Quarterfinals & Semifinals: Day 7</li>
+                        <li>Start at 9:00 AM; Might be there two clubs with evening rounds.</li>
+                        <li>Round of 32 & 16: Day 6 -Best of 3 Games</li>
+                        <li>Quarterfinals & Semifinals: Day 7 -Best of 3 Games</li>
                         <li>Finals: Day 8 (best of 5)</li>
                     </ul>
                 </div>

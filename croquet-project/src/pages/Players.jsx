@@ -13,7 +13,7 @@ export default function Players() {
                 { id: 1, name: "Amr El-Ebiary", photo: "/players/1.jpg" },
                 { id: 2, name: "Mohamed Nasr", photo: "/players/2.jpg" },
                 { id: 3, name: "Soha Mostafa", photo: "/players/soha.jpg" },
-                { id: 4, name: "Mohamed Walid", photo: "/players/4.jpg" },
+                { id: 4, name: "Mohamed Walid", photo: "/players/waleed.jpg" },
                 { id: 5, name: "Mohamed Taha", photo: "/players/5.jpg" },
                 { id: 6, name: "Fawzy Helmy", photo: "/players/fawzy.png" },
                 { id: 7, name: "Khaled Kamel", photo: "/players/khaledkamel.jpg" },
@@ -37,6 +37,7 @@ export default function Players() {
                 { id: 19, name: "Georgina Carnegie", photo: "/players/georgina.jpg" },
                 { id: 20, name: "Claire Keating", photo: "/players/claire.jpg" },
                 { id: 21, name: "Pauline Markwell", photo: "/players/pauline.png" },
+                {id:22, name: "Sandy Tawa", photo:"/players/sandy.png"},
             ]
         },
         {
@@ -104,7 +105,7 @@ export default function Players() {
                 { id: 56, name: "Hisham Zoghby", photo: "/players/hisham.jpg" },
                 { id: 57, name: "Amr Hamdy", photo: "/players/amr.jpg" },
                 { id: 58, name: "Nazmi Mohamed", photo: "/players/nazmi.jpg" },
-                { id: 59, name: "Ahmed Magdy", photo: "/players/ahmedmagdy.jpg" },
+
             ]
         },
         {

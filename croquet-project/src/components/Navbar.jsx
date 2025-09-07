@@ -1,40 +1,62 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './Navbar.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./Navbar.css";
 import ReactCountryFlag from "react-country-flag";
-
 
 const Navbar = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-    const toggleMenu = () => {
-        setIsMenuOpen(!isMenuOpen);
-    };
+    const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+    const closeMenu = () => setIsMenuOpen(false);
 
     return (
         <nav className="navbar">
             <div className="nav-container">
-                <Link to="/" className="nav-logo" onClick={() => setIsMenuOpen(false)}>
+                {/* Logo */}
+                <Link to="/" className="nav-logo" onClick={closeMenu}>
                     Egyptian Open
                     <ReactCountryFlag
                         countryCode="EG"
                         svg
-                        style={{ width: "20px", height: "14px", marginLeft: "6px", verticalAlign: "middle" }}
+                        style={{
+                            width: "20px",
+                            height: "14px",
+                            marginLeft: "6px",
+                            verticalAlign: "middle",
+                        }}
                     />
                 </Link>
 
-
-                <div className={`nav-menu ${isMenuOpen ? 'active' : ''}`}>
-                    <Link to="/home" className="nav-item" onClick={() => setIsMenuOpen(false)}>Home</Link>
-                    <Link to="/clubs" className="nav-item" onClick={()=> setIsMenuOpen(false)}>Clubs</Link>
-                    <Link to="/Matches" className="nav-item" onClick={() => setIsMenuOpen(false)}>Matches</Link>
-                    <Link to="/announcements" className="nav-item" onClick={() => setIsMenuOpen(false)}>Announcements</Link>
-                    <Link to="/gallery" className="nav-item" onClick={() => setIsMenuOpen(false)}>Gallery</Link>
-                    <Link to="/players" className="nav-item" onClick={() => setIsMenuOpen(false)}>Players</Link>
-                    <Link to="/help" className="nav-item" onClick={() => setIsMenuOpen(false)}>Need Help?</Link>
+                {/* Links */}
+                <div className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
+                    <Link to="/home" className="nav-item" onClick={closeMenu}>
+                        Home
+                    </Link>
+                    <Link to="/clubs" className="nav-item" onClick={closeMenu}>
+                        Clubs
+                    </Link>
+                    <Link to="/matches" className="nav-item" onClick={closeMenu}>
+                        Matches
+                    </Link>
+                    <Link to="/announcements" className="nav-item" onClick={closeMenu}>
+                        Announcements
+                    </Link>
+                    <Link to="/gallery" className="nav-item" onClick={closeMenu}>
+                        Gallery
+                    </Link>
+                    <Link to="/players" className="nav-item" onClick={closeMenu}>
+                        Players
+                    </Link>
+                    <Link to="/help" className="nav-item" onClick={closeMenu}>
+                        Need Help?
+                    </Link>
                 </div>
 
-                <div className="nav-toggle" onClick={toggleMenu}>
+                {/* Hamburger */}
+                <div
+                    className={`nav-toggle ${isMenuOpen ? "open" : ""}`}
+                    onClick={toggleMenu}
+                >
                     <span className="bar"></span>
                     <span className="bar"></span>
                     <span className="bar"></span>

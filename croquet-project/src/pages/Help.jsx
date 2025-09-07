@@ -15,11 +15,11 @@ export default function Help() {
     const faqs = [
         {
             q: "What courts are the tournament played on?",
-            a: "The Egyptian Open is played across multiple prestigious clubs: El-Gezira Club, Federation Courts, Heliopolis Club, Shooting Club, and El-Zohor Club.",
+            a: "The Egyptian Open is played across multiple prestigious clubs: El-Gezira Club, Federation Courts, Heliopolis Club, Shooting Club, and El-Zohour Club.",
             icon: "🎾"
         },
         {
-            q: "Is the final match best of 3 or best of 5?",
+            q: "Is the final match best of 3 games or best of 5 games?",
             a: "The final match is played as best of 5.",
             icon: "🏆"
         },

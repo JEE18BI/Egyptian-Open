@@ -1,38 +1,87 @@
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, useLocation } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
+import Navbar from "./components/Navbar.jsx";
+import Footer from "./pages/Footer.jsx";
+
 import Home from "./pages/Home.jsx";
 import Gallery from "./pages/Gallery.jsx";
 import Players from "./pages/Players.jsx";
 import Help from "./pages/Help.jsx";
 import Announcements from "./pages/Announcements.jsx";
 import Clubs from "./pages/Clubs.jsx";
-import Navbar from "./components/Navbar.jsx";
-import LiveMatches from "./pages/LiveMatches.jsx"
-import TournamentDetails from "./pages/TournamentDetails";
-import { useEffect } from "react";
-
-import './App.css';
+import LiveMatches from "./pages/LiveMatches.jsx";
+import TournamentDetails from "./pages/TournamentDetails.jsx";
+import ScrollToTop from "./pages/ScrollToTop.jsx";
+import "./App.css";
 
 function App() {
+    const location = useLocation();
+
     useEffect(() => {
-        document.title = "Egyptian Open 2025" // <- your title here
+        document.title = "Egyptian Open 2025";
     }, []);
+
     return (
         <>
-
-
             <Navbar />
-            <Routes>
-                <Route path="/" element={<Home />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/clubs" element={<Clubs/>} />
-                <Route path="/matches" element={<LiveMatches />} />
-                <Route path="/announcements" element={<Announcements />} />
-                <Route path="/gallery" element={<Gallery />} />
-                <Route path="/players" element={<Players />} />
-                <Route path="/help" element={<Help />} />
-                <Route path="/tournament-details" element={<TournamentDetails />} />
-            </Routes>
+            <AnimatePresence mode="wait">
+                <ScrollToTop/>
+                <Routes location={location} key={location.pathname}>
+                    <Route
+                        path="/"
+                        element={<PageWrapper><Home /></PageWrapper>}
+                    />
+                    <Route
+                        path="/home"
+                        element={<PageWrapper><Home /></PageWrapper>}
+                    />
+                    <Route
+                        path="/clubs"
+                        element={<PageWrapper><Clubs /></PageWrapper>}
+                    />
+                    <Route
+                        path="/matches"
+                        element={<PageWrapper><LiveMatches /></PageWrapper>}
+                    />
+                    <Route
+                        path="/announcements"
+                        element={<PageWrapper><Announcements /></PageWrapper>}
+                    />
+                    <Route
+                        path="/gallery"
+                        element={<PageWrapper><Gallery /></PageWrapper>}
+                    />
+                    <Route
+                        path="/players"
+                        element={<PageWrapper><Players /></PageWrapper>}
+                    />
+                    <Route
+                        path="/help"
+                        element={<PageWrapper><Help /></PageWrapper>}
+                    />
+                    <Route
+                        path="/tournament-details"
+                        element={<PageWrapper><TournamentDetails /></PageWrapper>}
+                    />
+                </Routes>
+            </AnimatePresence>
+            <Footer />
         </>
+    );
+}
+
+// ✅ A wrapper component that adds animation
+function PageWrapper({ children }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0, y: 20 }}   // start faded + slightly down
+            animate={{ opacity: 1, y: 0 }}   // animate to visible
+            exit={{ opacity: 0, y: -20 }}    // fade out + slide up
+            transition={{ duration: 0.4 }}   // speed of animation
+        >
+            {children}
+        </motion.div>
     );
 }
 
