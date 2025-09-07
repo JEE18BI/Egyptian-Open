@@ -111,7 +111,7 @@ export default function LiveMatches() {
                 <p>Check today’s schedule and search for your match</p>
                 <input
                     type="text"
-                    placeholder="Search by player or club name..."
+                    placeholder="Search by player..."
                     value={searchTerm}
                     onChange={handleSearch}
                     className="match-search-input"
