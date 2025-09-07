@@ -25,6 +25,8 @@ export default function Players() {
                 { id: 13, name: "Yasser Abo-Elnour", photo: "/players/yasser.jpg" },
                 { id: 14, name: "Mostafa Nezar", photo: "/players/mostafa.png" },
                 { id: 15, name: "Youssef El-Seweify", photo: "/players/seweify.jpg" },
+                { id: 16, name: "Hamy Erian", photo: "/players/hamy.jpg" }
+
             ]
         },
         {
