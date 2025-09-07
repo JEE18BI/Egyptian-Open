@@ -37,7 +37,7 @@ export default function Players() {
                 { id: 19, name: "Georgina Carnegie", photo: "/players/georgina.jpg" },
                 { id: 20, name: "Claire Keating", photo: "/players/claire.jpg" },
                 { id: 21, name: "Pauline Markwell", photo: "/players/pauline.png" },
-                {id:22, name: "Sandy Tawa", photo:"/players/sandy.png"},
+                {id:22, name: "Sandy Tawa", photo:"/players/sandy.jpg"},
             ]
         },
         {
@@ -68,7 +68,7 @@ export default function Players() {
                 { id: 37, name: "Stephen Morgan", photo: "/players/stephen.png" },
                 { id: 38, name: "Nour Abdel All", photo: "/players/nour.jpg" },
                 { id: 39, name: "Seham Hassan", photo: "/players/seham.jpg" },
-                { id: 40, name: "Khaled Kholeif", photo: "/players/kholief.png" },
+                { id: 40, name: "Khaled Kholeif", photo: "/players/kholief.jpg" },
                 { id: 41, name: "Renee F. Seblatning", photo: "/players/renee.jpg" },
             ]
         },
