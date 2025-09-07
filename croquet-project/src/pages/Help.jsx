@@ -79,6 +79,7 @@ export default function Help() {
                                 {c.phone ? <p>{c.phone}</p> : <p>Contact not available yet</p>}
                             </div>
                             {c.phone && (
+
                                 <a href={`tel:${c.phone}`} className="call-button">
                                     <span>Call Now</span> <span className="phone-icon">📞</span>
                                 </a>

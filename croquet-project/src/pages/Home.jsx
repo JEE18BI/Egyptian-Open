@@ -1,46 +1,57 @@
 import React, { useState, useEffect } from 'react';
-
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
 
-// Import your images (adjust paths as needed)
 import bg1 from '../components/1.jpg';
 import bg2 from '../components/2.jpg';
 import bg3 from '../components/3.jpg';
 import bg4 from '../components/4.jpg';
 import bg5 from '../components/5.jpg';
-import {useNavigate} from "react-router-dom";
+
+const backgroundImages = [bg1, bg2, bg3, bg4, bg5];
 
 const Home = () => {
     const [currentBg, setCurrentBg] = useState(0);
+    const [loadedImages, setLoadedImages] = useState([bg1]);
     const navigate = useNavigate();
 
-    // Background images array using imported images
-    const backgroundImages = [bg1, bg2, bg3, bg4,bg5];
-
-    // Change background every 5 seconds
+    // Lazy load and cycle backgrounds
     useEffect(() => {
         const interval = setInterval(() => {
-            setCurrentBg((prevBg) => (prevBg + 1) % backgroundImages.length);
-        }, 2000);
+            const nextIndex = (currentBg + 1) % backgroundImages.length;
+
+            if (!loadedImages.includes(backgroundImages[nextIndex])) {
+                const img = new Image();
+                img.src = backgroundImages[nextIndex];
+                img.onload = () => {
+                    setLoadedImages(prev => [...prev, backgroundImages[nextIndex]]);
+                    setCurrentBg(nextIndex); // switch only when loaded
+                };
+            } else {
+                setCurrentBg(nextIndex);
+            }
+        }, 3000); // change every 3s
 
         return () => clearInterval(interval);
-    }, []);
+    }, [currentBg, loadedImages]);
 
     return (
         <div className="app">
+            {/* HERO SECTION */}
+            <div className="hero-section">
+                {backgroundImages.map((img, index) => (
+                    <div
+                        key={index}
+                        className={`bg-slide ${index === currentBg ? "active" : ""}`}
+                        style={{
+                            backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url(${img})`
+                        }}
+                    />
+                ))}
 
-
-            {/* Hero Section with changing background */}
-            <div
-                className="hero-section"
-                style={{
-                    backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(${backgroundImages[currentBg]})`
-                }}
-            >
                 <div className="hero-content">
                     <h2>WELCOME TO THE 20TH EGYPTIAN OPEN!</h2>
-                    <p>where fun and skills meet.</p>
-
+                    <p>where fun and skills meet</p>
                     <button
                         className="view-details-btn"
                         onClick={() => navigate("/tournament-details")}
@@ -50,12 +61,17 @@ const Home = () => {
                 </div>
             </div>
 
-            {/* Content Sections */}
+            {/* ABOUT SECTION */}
             <div className="content-section">
-                <h3>About Egyptian Open Tournament </h3>
-                <p>The Egyptian Open Croquet Championship is the most prestigious croquet event in North Africa, attracting players and enthusiasts from around the world. Established in 2006, our tournament combines tradition with competitive excellence.</p>
+                <h3>About Egyptian Open Tournament</h3>
+                <p>
+                    The Egyptian Open Croquet Championship is the most prestigious croquet event in North Africa,
+                    attracting players and enthusiasts from around the world. Established in 2006, our tournament
+                    combines tradition with competitive excellence.
+                </p>
             </div>
 
+            {/* EXPERIENCES SECTION */}
             <div className="content-section dark">
                 <div className="section-header">
                     <h3>What You Will Experience</h3>
