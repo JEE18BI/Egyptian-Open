@@ -5,6 +5,14 @@
     box-sizing: border-box;
 }
 
+/* Prevent horizontal scroll on all pages */
+html, body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;  /* 🚫 kills side scroll */
+    position: relative;
+}
+
 body {
     font-family: Arial, sans-serif;
     background: #fff;

@@ -68,7 +68,7 @@ export default function Players() {
                 { id: 37, name: "Stephen Morgan", photo: "/players/stephen.png" },
                 { id: 38, name: "Nour Abdel All", photo: "/players/nour.jpg" },
                 { id: 39, name: "Seham Hassan", photo: "/players/seham.jpg" },
-                { id: 40, name: "Khaled Kholeif", photo: "/players/khaledkholeif.jpg" },
+                { id: 40, name: "Khaled Kholeif", photo: "/players/kholief.png" },
                 { id: 41, name: "Renee F. Seblatning", photo: "/players/renee.jpg" },
             ]
         },
@@ -139,7 +139,7 @@ export default function Players() {
             {/* Header Section */}
             <div className="players-header">
                 <h1>Players 🌍</h1>
-                <p className="players-intro">Meet all 80 competitors of the Egyptian Open 2025</p>
+                <p className="players-intro">Meet all competitors of the Egyptian Open 2025</p>
             </div>
 
             {/* Players by Country */}
