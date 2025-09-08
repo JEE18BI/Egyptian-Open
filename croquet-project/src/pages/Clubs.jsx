@@ -72,7 +72,7 @@ export default function Clubs() {
                 "Air-conditioned Players’ Lounge",
                 "Close Bathrooms & Locker Rooms"
             ],
-            tips: "Abeer Mourad is going to take Care of You!",
+            tips: "The main Restaurant is highly recommended.",
             food: [
                 "🥗 Club Restaurant – classic meals",
                 "Cafeteria - Just Order!",
@@ -88,7 +88,7 @@ export default function Clubs() {
             photo: club3,
             description: "One of Cairo’s most vibrant sporting hubs. Renowned for its excellent organization and welcoming atmosphere, the Shooting Club offers some of the best-maintained croquet courts in Egypt. With a strong tradition of hosting major tournaments, it remains a favorite destination for both players and fans of the sport.",
             address: "Dokki, Cairo",
-            contact: "+20 100 712 8666",
+
             facilities: [
                 "2 Croquet Courts",
                 "Cafeteria & Nearby Fast Food Restaurants",
@@ -106,28 +106,32 @@ export default function Clubs() {
             ],
             location: "https://maps.app.goo.gl/KdoJUsi4ZkruQfEn9?g_st=ipc"
         },
+
         {
             id: 5,
             name: "El-Zohour Club",
             logo: "🌅",
             photo: club4,
-            description: "Exclusive club with top-notch amenities and professional staff.",
+            description: "Exclusive club with top-notch amenities and professional staff. Known for its comfortable setup and variety of services, making it an excellent venue for the championship.",
             address: "Nasr City, Cairo",
+            contact: "",
             facilities: [
                 "2 Croquet Courts",
                 "Cafeteria",
                 "Air-conditioned Players’ Lounge",
                 "Bathrooms & Locker Rooms"
             ],
-            tips: "Need something? Just Ask Moe Karem or Salah Hassan",
+            tips: "If you need anything, You can call Salah Hassan. You'll find his contact in Help section",
             food: [
-                "🥪 Zooba – Egyptian street food",
-                "🍕 Pizza Hut – quick option nearby",
-                "☕ Starbucks – coffee & pastries",
-                "🥘 Club Cafeteria – easy meals inside"
+                "🏨 Four Seasons – fine dining nearby",
+                "🍴 Half Time – quick outlet for snacks & light meals",
+                "🥪 Bon Appetit – sandwiches & baked items",
+                "☕ Club Cafeteria – serves all beverages, pies & crepes , and full meals",
+                "🥤 Nearby coffeeshops – casual options around the club"
             ],
-            location: "https://maps.app.goo.gl/sCMjZJUe5TthFePU8?g_st=ipc"
+            location:"https://maps.app.goo.gl/sCMjZJUe5TthFePU8?g_st=ipc"
         }
+
     ];
 
     return (

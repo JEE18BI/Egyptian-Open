@@ -10,7 +10,7 @@ export default function Players() {
             country: "Egypt",
             code: "EG",
             players: [
-                { id: 1, name: "Amr El-Ebiary", photo: "/players/1.jpg" },
+                { id: 1, name: "Amr El-Ebiary", photo: "/players/ebiary.jpg" },
                 { id: 2, name: "Mohamed Nasr", photo: "/players/2.jpg" },
                 { id: 3, name: "Soha Mostafa", photo: "/players/soha.jpg" },
                 { id: 4, name: "Mohamed Walid", photo: "/players/waleed.jpg" },
@@ -25,7 +25,18 @@ export default function Players() {
                 { id: 13, name: "Yasser Abo-Elnour", photo: "/players/yasser.jpg" },
                 { id: 14, name: "Mostafa Nezar", photo: "/players/mostafa.png" },
                 { id: 15, name: "Youssef El-Seweify", photo: "/players/seweify.jpg" },
-                { id: 16, name: "Hamy Erian", photo: "/players/hamy.jpg" }
+                { id: 16, name: "Hamy Erian", photo: "/players/hamy.jpg" },
+                { id: 17, name: "Maram Nabil", photo: "/players/maram.jpg" },
+                { id: 18, name: "Yasser Sayed", photo: "/players/yassersayed.jpg" },
+                { id: 19, name: "Omar Fahmy", photo: "/players/fahmy.jpg" },
+                { id: 20, name: "Nour Aly", photo: "/players/nouraly.jpg" },
+                { id: 21, name: "Rania Khorshed", photo: "/players/rania.jpg" },
+                { id: 22, name: "Asrar Rabieh", photo: "/players/asrar.jpg" },
+                { id: 23, name: "Mostafa Eissa", photo: "/players/mostafaeissa.jpg" },
+                { id: 24, name: "Sherif Abousbaa", photo: "/players/sherifabo.jpg" },
+                { id: 25, name: "Samy Ahmed", photo: "/players/samy.jpg" },
+                { id: 26, name: "Hazem Zaghloul", photo: "/players/hazem.jpg" },
+                { id: 27, name: "Ahmed El-Taweel", photo: "/players/eltaweel.jpg" },
 
             ]
         },
@@ -35,7 +46,7 @@ export default function Players() {
             players: [
                 { id: 16, name: "Alison Sharpe", photo: "/players/alison.jpg" },
                 { id: 17, name: "Jill Sullivan", photo: "/players/jill.png" },
-                { id: 18, name: "Mary McMahon", photo: "/players/mary.jpg" },
+                { id: 18, name: "Mary McMahon", photo: "/players/mary.png" },
                 { id: 19, name: "Georgina Carnegie", photo: "/players/georgina.jpg" },
                 { id: 20, name: "Claire Keating", photo: "/players/claire.jpg" },
                 { id: 21, name: "Pauline Markwell", photo: "/players/pauline.png" },
