@@ -38,6 +38,7 @@ export default function Players() {
                 { id: 26, name: "Hazem Zaghloul", photo: "/players/hazem.jpg" },
                 { id: 27, name: "Ahmed El-Taweel", photo: "/players/eltaweel.jpg" },
                 { id: 28, name: "Ahmed Aly", photo: "/players/ahmedaly.jpg"},
+                { id: 29, name: "Youssef Yasser", photo: "/players/youssefyasser.jpg"},
 
             ]
         },

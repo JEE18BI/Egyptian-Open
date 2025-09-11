@@ -26,6 +26,7 @@ function App() {
     return (
         <>
             <Navbar />
+
             <AnimatePresence mode="wait">
                 <ScrollToTop/>
                 <Routes location={location} key={location.pathname}>
