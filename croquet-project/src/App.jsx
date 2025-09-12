@@ -13,7 +13,7 @@ import Clubs from "./pages/Clubs.jsx";
 import LiveMatches from "./pages/LiveMatches.jsx";
 import TournamentDetails from "./pages/TournamentDetails.jsx";
 import ScrollToTop from "./pages/ScrollToTop.jsx";
-// import Blocks from "./pages/Blocks.jsx";
+import Blocks from "./pages/Blocks.jsx";
 import "./App.css";
 
 function App() {
@@ -42,10 +42,10 @@ function App() {
                         path="/clubs"
                         element={<PageWrapper><Clubs /></PageWrapper>}
                     />
-                    {/*<Route*/}
-                    {/*    path="/blocks"*/}
-                    {/*    element={<PageWrapper><Blocks/></PageWrapper>}*/}
-                    {/*/>*/}
+                    <Route
+                        path="/blocks"
+                        element={<PageWrapper><Blocks/></PageWrapper>}
+                    />
                     <Route
                         path="/matches"
                         element={<PageWrapper><LiveMatches /></PageWrapper>}
