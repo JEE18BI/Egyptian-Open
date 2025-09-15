@@ -158,7 +158,8 @@
         top: 55px; /* push below navbar */
         right: -260px; /* hide off screen */
         width: 250px;
-        background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%);
+        background: rgba(26, 26, 26, 0.95); /* semi-transparent dark */
+        backdrop-filter: blur(6px);
         flex-direction: column;
         transition: right 0.3s ease-in-out;
         padding: 10px 0;
