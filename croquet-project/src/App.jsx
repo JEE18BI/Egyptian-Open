@@ -73,8 +73,9 @@ function App() {
                     />
                 </Routes>
             </AnimatePresence>
-            <SponsorBanner/>
+
             <Footer />
+            <SponsorBanner/>
         </>
     );
 }
