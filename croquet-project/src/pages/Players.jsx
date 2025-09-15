@@ -100,7 +100,6 @@ export default function Players() {
                 { id: 33, name: "Hossam El Bibani", photo: "/players/hossam.jpg" },
                 { id: 34, name: "Mohamed Kamal", photo: "/players/mohamed.jpg" },
 
-                { id: 37, name: "Stephen Morgan", photo: "/players/stephen.png" },
                 { id: 38, name: "Nour Abdel All", photo: "/players/nour.jpg" },
                 { id: 39, name: "Seham Hassan", photo: "/players/seham.jpg" },
                 { id: 40, name: "Khaled Kholeif", photo: "/players/kholief.jpg" },
