@@ -76,7 +76,7 @@ export default function Announcements() {
     return (
         <div className="announcements-page">
             <div className="announcements-header">
-                <h1>📢 Egyptian Open Tournament</h1>
+                <h1>📢 Egypt Open Tournament</h1>
                 <p>Stay updated with tournament details and announcements</p>
             </div>
 
