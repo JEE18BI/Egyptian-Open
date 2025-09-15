@@ -73,7 +73,7 @@ const Home = () => {
                 ))}
 
                 <div className="hero-content">
-                    <h2>WELCOME TO THE 20TH EGYPTIAN OPEN!</h2>
+                    <h2>WELCOME TO THE 20TH EGYPT OPEN!</h2>
                     <p>Where fun and skills meet</p>
                     <button
                         className="view-details-btn"
@@ -86,9 +86,9 @@ const Home = () => {
 
             {/* ABOUT SECTION */}
             <div className="content-section">
-                <h3>About Egyptian Open Tournament</h3>
+                <h3>About Egypt Open Tournament</h3>
                 <p>
-                    The Egyptian Open Croquet Championship is the most prestigious
+                    The Egypt Open Croquet Championship is the most prestigious
                     croquet event in North Africa, attracting players and enthusiasts
                     from around the world. Established in 2006, our tournament combines
                     tradition with competitive excellence.

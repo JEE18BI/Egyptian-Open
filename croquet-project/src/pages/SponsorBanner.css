@@ -1,0 +1,38 @@
+.sponsor-banner {
+    position: fixed;
+    bottom: 15px;
+    right: 15px;
+    background-color: #ff4500;
+    color: white;
+    padding: 0.5rem 1rem; /* smaller padding */
+    border-radius: 8px;    /* slightly smaller corners */
+    box-shadow: 0 3px 10px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.85rem;     /* smaller text */
+    animation: bounce 2s infinite;
+    z-index: 1000;
+}
+
+.sponsor-banner a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    margin: 0 0.3rem;
+    font-size: 0.85rem;
+}
+
+.sponsor-banner a:hover {
+    text-decoration: underline;
+}
+
+.talabat-logo {
+    width: 50px;       /* smaller logo */
+    margin-bottom: 0.3rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+    40% { transform: translateY(-5px); } /* smaller bounce */
+    60% { transform: translateY(-2px); }
+}

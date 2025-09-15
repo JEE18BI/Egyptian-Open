@@ -10,7 +10,7 @@ export default function Players() {
             country: "Egypt",
             code: "EG",
             players: [
-                { id: 1, name: "Amr El-Ebiary", photo: "/players/ebiary.jpg" },
+                { id: 1, name: "Ahmed Nasr", photo: "/players/ahmednasr.jpg" },
                 { id: 2, name: "Mohamed Nasr", photo: "/players/2.jpg" },
                 { id: 3, name: "Soha Mostafa", photo: "/players/soha.jpg" },
                 { id: 4, name: "Mohamed Walid", photo: "/players/waleed.jpg" },
@@ -42,6 +42,15 @@ export default function Players() {
                 { id: 15, name: "Youssef El-Seweify", photo: "/players/seweify.jpg" },
                 { id: 11, name: "Khaled Hazem", photo: "/players/khaledhazem.jpg" },
                 { id: 12, name: "Hazem El-Sayed", photo: "/players/hazemelsayed.jpg" },
+                { id: 100, name: "May Aly Maher", photo: "/players/maymaher.png" },
+                { id: 101, name: "Aly El-Zeiny", photo: "/players/alyelzeiny.jpg" },
+                { id: 103, name: "Saif Hatem", photo: "/players/saifhatem.jpg" },
+                { id: 104, name: "Hossam El-Atfy", photo: "/players/hossamatfy.jpg" },
+                { id: 105, name: "Sandy Hassan", photo: "/players/sandyhassan.jpg" },
+                { id: 106, name: "Ahmed El-Ammary", photo: "/players/ammary.jpg" },
+                { id: 107, name: "Ahmed Kamal", photo: "/players/ahmedkamal.jpg" },
+                { id: 108, name: "Mostafa Samir", photo: "/players/mostafasamir.jpg" },
+
 
 
 
@@ -75,8 +84,11 @@ export default function Players() {
             country: "USA",
             code: "US",
             players: [
-                { id: 23, name: "Tom Balding", photo: "/players/tom.jpg" },
                 { id: 24, name: "Len Canavan", photo: "/players/len.jpg" },
+                { id: 23, name: "Tom Balding", photo: "/players/tom.jpg" },
+                { id: 35, name: "Adam Peck", photo: "/players/adam.jpg" },
+                { id: 36, name: "Darin Guffey", photo: "/players/darin.jpg" },
+
                 { id: 25, name: "Bill Simmons", photo: "/players/bill.jpeg" },
                 { id: 26, name: "Kyle Maloof", photo: "/players/kyle.png" },
                 { id: 27, name: "Gabriella Maloof", photo: "/players/gabriella.png" },
@@ -87,8 +99,7 @@ export default function Players() {
                 { id: 32, name: "Sarah Persons", photo: "/players/sarah.png" },
                 { id: 33, name: "Hossam El Bibani", photo: "/players/hossam.jpg" },
                 { id: 34, name: "Mohamed Kamal", photo: "/players/mohamed.jpg" },
-                { id: 35, name: "Adam Peck", photo: "/players/adam.jpg" },
-                { id: 36, name: "Darin Guffey", photo: "/players/darin.jpg" },
+
                 { id: 37, name: "Stephen Morgan", photo: "/players/stephen.png" },
                 { id: 38, name: "Nour Abdel All", photo: "/players/nour.jpg" },
                 { id: 39, name: "Seham Hassan", photo: "/players/seham.jpg" },
@@ -163,7 +174,7 @@ export default function Players() {
             {/* Header Section */}
             <div className="players-header">
                 <h1>Players 🌍</h1>
-                <p className="players-intro">Meet all competitors of the Egyptian Open 2025</p>
+                <p className="players-intro">Meet all competitors of the Egypt Open 2025</p>
             </div>
 
             {/* Players by Country */}

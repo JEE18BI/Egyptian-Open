@@ -8,8 +8,8 @@ export default function Help() {
         { name: "Mohamed Hassan (Tournament Manager)", phone: "+201002597737", icon: "🧑‍💼" },
         {name: "Jana Mohamed (Tournament Assistant Manager)", phone: "+201060676156", icon: "👩‍💼" },
         { name: "Shooting Club Contact: Ghada", phone: "+01007128666", icon: "🏹" },
-        { name: "El-Zohor Club Contact: Salah Hassan", phone: "+201141191118", icon: "🌅" },
-        { name: "Heliopolis Club Contact", phone: "", icon: "🌳" } // Blank for now
+        { name: "El-Zohour Club Contact: Salah Hassan", phone: "+201141191118", icon: "🌅" },
+        { name: "Heliopolis Club Contact: Tasnem Mohamed", phone: "+201060548783", icon: "🌳" } // Blank for now
     ];
 
     const faqs = [
