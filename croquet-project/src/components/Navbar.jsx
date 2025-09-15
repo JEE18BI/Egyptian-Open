@@ -29,7 +29,7 @@ const Navbar = () => {
 
                 {/* Links */}
                 <div className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
-                    <Link to="/home" className="nav-item" onClick={closeMenu}>
+                    <Link to="/egyptianopen" className="nav-item">
                         Home
                     </Link>
                     <Link to="/clubs" className="nav-item" onClick={closeMenu}>

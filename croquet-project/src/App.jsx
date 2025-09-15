@@ -33,7 +33,8 @@ function App() {
                     <ScrollToTop />
                     <Routes location={location} key={location.pathname}>
                         <Route path="/" element={<PageWrapper><Home /></PageWrapper>} />
-                        <Route path="/home" element={<PageWrapper><Home /></PageWrapper>} />
+                        <Route path="/egyptianopen" element={<PageWrapper><Home /></PageWrapper>} />
+
                         <Route path="/clubs" element={<PageWrapper><Clubs /></PageWrapper>} />
                         <Route path="/blocks" element={<PageWrapper><Blocks /></PageWrapper>} />
                         <Route path="/matches" element={<PageWrapper><LiveMatches /></PageWrapper>} />
