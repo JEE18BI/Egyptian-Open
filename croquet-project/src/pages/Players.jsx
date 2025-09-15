@@ -88,7 +88,6 @@ export default function Players() {
                 { id: 23, name: "Tom Balding", photo: "/players/tom.jpg" },
                 { id: 35, name: "Adam Peck", photo: "/players/adam.jpg" },
                 { id: 36, name: "Darin Guffey", photo: "/players/darin.jpg" },
-
                 { id: 25, name: "Bill Simmons", photo: "/players/bill.jpeg" },
                 { id: 26, name: "Kyle Maloof", photo: "/players/kyle.png" },
                 { id: 27, name: "Gabriella Maloof", photo: "/players/gabriella.png" },
@@ -99,7 +98,6 @@ export default function Players() {
                 { id: 32, name: "Sarah Persons", photo: "/players/sarah.png" },
                 { id: 33, name: "Hossam El Bibani", photo: "/players/hossam.jpg" },
                 { id: 34, name: "Mohamed Kamal", photo: "/players/mohamed.jpg" },
-
                 { id: 38, name: "Nour Abdel All", photo: "/players/nour.jpg" },
                 { id: 39, name: "Seham Hassan", photo: "/players/seham.jpg" },
                 { id: 40, name: "Khaled Kholeif", photo: "/players/kholief.jpg" },
