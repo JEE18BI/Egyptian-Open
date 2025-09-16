@@ -194,6 +194,32 @@
     height: 50px;
     animation: spin 1s linear infinite;
 }
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    position: relative;
+}
+
+.table-wrapper::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 30px;
+    height: 100%;
+    background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
+    pointer-events: none;
+}
+
+.matches-table,
+.player-summary-table {
+    min-width: 600px;
+    border-collapse: collapse;
+}
+
 
 @keyframes spin {
     0% { transform: rotate(0deg); }

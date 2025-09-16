@@ -306,6 +306,7 @@
 }
 .Scroll{
     font-size: 30px;
+    color:black;
 }
 @keyframes fadeIn {
     from { opacity: 0; }
