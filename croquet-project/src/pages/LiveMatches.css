@@ -78,7 +78,7 @@
     color: #1e3a8a;
 }
 .player-popup-days {
-    max-height: 400px;   /* adjust height as needed */
+    max-height: 300px;   /* adjust height as needed */
     overflow-y: auto;    /* vertical scroll */
     padding-right: 5px;  /* space so scrollbar doesn’t cover text */
 }
