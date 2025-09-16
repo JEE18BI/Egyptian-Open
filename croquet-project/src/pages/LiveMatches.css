@@ -349,9 +349,12 @@
         color: #1e3a8a;
     }
     .player-popup {
-        margin-top: 40px;   /* pushes down from very top */
-        margin-bottom: 20px;
-        max-height: 75vh;   /* smaller so it never blocks button */
+        width: 90%;        /* smaller width */
+        max-width: 320px;  /* caps it */
+        margin: 40px auto; /* center horizontally, pushes from top */
+        padding: 0.5rem;
+        border-radius: 8px;
+        max-height: 70vh;  /* smaller height */
         overflow-y: auto;
 
 }
