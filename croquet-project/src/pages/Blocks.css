@@ -333,3 +333,14 @@
     background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.45));
     box-shadow: var(--shadow);
 }
+/* Disable big zoom on mobile */
+@media (max-width: 720px) {
+    .block-card.active {
+        transform: scale(1.02); /* small zoom, not overflowing */
+        width: 100%;           /* fit inside screen */
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+    }
+}
+
