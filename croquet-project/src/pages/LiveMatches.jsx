@@ -229,7 +229,7 @@ export default function LiveMatches() {
                                     }`}
                                 >
                                     {activeDay === `${block}-${day}` && (
-                                        <div className="table-wrapper">
+                                        <div className="matches-scroll">
                                             <table className="matches-table">
                                                 <thead>
                                                 <tr>
@@ -252,6 +252,7 @@ export default function LiveMatches() {
                                             </table>
                                         </div>
                                     )}
+
                                 </div>
                             </div>
                         ))}

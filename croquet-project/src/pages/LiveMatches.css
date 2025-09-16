@@ -119,6 +119,26 @@
     cursor: pointer;
     font-weight: bold;
 }
+/* Scrollable matches inside a day */
+.matches-scroll {
+    max-height: 300px;   /* adjust as needed */
+    overflow-y: auto;
+    margin-top: 0.5rem;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Show scrollbar clearly */
+.matches-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+.matches-scroll::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 4px;
+}
+.matches-scroll::-webkit-scrollbar-thumb:hover {
+    background: #666;
+}
 
 .close-popup-btn:hover {
     background: #dc2626;
