@@ -50,6 +50,10 @@ export default function Players() {
                 { id: 106, name: "Ahmed El-Ammary", photo: "/players/ammary.jpg" },
                 { id: 107, name: "Ahmed Kamal", photo: "/players/ahmedkamal.jpg" },
                 { id: 108, name: "Mostafa Samir", photo: "/players/mostafasamir.jpg" },
+                { id: 108, name: "ElSaeed Mahmoud", photo: "/players/ElSaeed.jpg" },
+                { id: 108, name: "Ghada Azmy", photo: "/players/ghadaazmy.jpg" },
+
+
 
 
 
@@ -94,7 +98,7 @@ export default function Players() {
                 { id: 28, name: "Sherif Abdelwahab", photo: "/players/sherif.jpg" },
                 { id: 29, name: "Ahab Abdel Wahab", photo: "/players/ahab.jpg" },
                 { id: 30, name: "Tamer Hatata", photo: "/players/tamer.jpg" },
-                { id: 31, name: "Sandra Knuth", photo: "/players/sandra.jpg" },
+
                 { id: 32, name: "Sarah Persons", photo: "/players/sarah.png" },
                 { id: 33, name: "Hossam El Bibani", photo: "/players/hossam.jpg" },
                 { id: 34, name: "Mohamed Kamal", photo: "/players/mohamed.jpg" },
