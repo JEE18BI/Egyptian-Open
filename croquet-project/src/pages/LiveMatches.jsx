@@ -122,6 +122,7 @@ export default function LiveMatches() {
             <div className="matches-header">
                 <h1>Matches</h1>
                 <p>Check the schedule and search for your match</p>
+                <p>After choosing your block, Choose your day and scroll down to see all matches</p>
                 <input
                     type="text"
                     placeholder="Search by player..."

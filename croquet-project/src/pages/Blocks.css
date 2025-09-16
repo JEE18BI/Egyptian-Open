@@ -124,7 +124,8 @@
     flex-direction:column;
     gap:8px;
     max-height:240px;
-    overflow:auto;
+    overflow-y: scroll;   /* instead of auto */
+    scrollbar-gutter: stable; /* keeps layout stable */
     padding-right:6px;
 
     counter-reset: player-counter;

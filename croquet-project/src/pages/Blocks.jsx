@@ -207,6 +207,7 @@ export default function Blocks() {
             <div className="blocks-header">
                 <h1>Championship Blocks 🏆</h1>
                 <p>Type your name to find your block</p>
+                <p>Scroll down through the block to see the whole block</p>
             </div>
 
             {/* --- Search Section --- */}

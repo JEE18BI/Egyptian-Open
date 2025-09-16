@@ -67,7 +67,8 @@
 /* Scrollable Matches inside a Day/Block */
 .matches-scroll {
     max-height: 300px; /* adjust height */
-    overflow-y: auto;
+    overflow-y: scroll;
+    scrollbar-gutter: stable;
     margin: 0.5rem;
     border-radius: 6px;
     border: 1px solid #ddd;
