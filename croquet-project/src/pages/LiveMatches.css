@@ -1,5 +1,6 @@
 /* LiveMatches.css */
 
+/* Base Layout */
 .live-matches-page {
     padding: 1rem;
     max-width: 95%;
@@ -60,11 +61,45 @@
 }
 
 .block-content.open, .day-content.open {
-    max-height: 1000px;
-    transition: max-height 0.5s ease;
+    max-height: none; /* let inner scroll handle overflow */
 }
 
-/* Tables */
+/* Scrollable Matches inside a Day/Block */
+.matches-scroll {
+    max-height: 300px; /* adjust height */
+    overflow-y: auto;
+    margin: 0.5rem;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    background: white;
+    position: relative;
+}
+
+/* Scrollbar Styling */
+.matches-scroll::-webkit-scrollbar {
+    width: 8px;
+}
+.matches-scroll::-webkit-scrollbar-thumb {
+    background: #999;
+    border-radius: 4px;
+}
+.matches-scroll::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Fade effect hint for scroll */
+.matches-scroll::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 30px;
+    background: linear-gradient(to bottom, transparent, white);
+    pointer-events: none;
+}
+
+/* Tables (Desktop style) */
 .matches-table, .player-summary-table {
     width: 100%;
     border-collapse: collapse;
@@ -119,27 +154,6 @@
     cursor: pointer;
     font-weight: bold;
 }
-/* Scrollable matches inside a day */
-.matches-scroll {
-    max-height: 300px;   /* adjust as needed */
-    overflow-y: auto;
-    margin-top: 0.5rem;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-}
-
-/* Show scrollbar clearly */
-.matches-scroll::-webkit-scrollbar {
-    width: 8px;
-}
-.matches-scroll::-webkit-scrollbar-thumb {
-    background: #999;
-    border-radius: 4px;
-}
-.matches-scroll::-webkit-scrollbar-thumb:hover {
-    background: #666;
-}
-
 .close-popup-btn:hover {
     background: #dc2626;
 }
@@ -147,32 +161,29 @@
 /* Scrollable Player Matches */
 .player-popup-days {
     flex: 1;
-    overflow-y: scroll; /* 👈 always show scrollbar */
+    overflow-y: auto;
     min-height: 100px;
     padding-right: 5px;
     position: relative;
 }
 
-/* Always-visible scrollbar */
+/* Scrollbar */
 .player-popup-days::-webkit-scrollbar {
     width: 8px;
 }
-
 .player-popup-days::-webkit-scrollbar-track {
     background: #f1f1f1;
     border-radius: 4px;
 }
-
 .player-popup-days::-webkit-scrollbar-thumb {
     background: #888;
     border-radius: 4px;
 }
-
 .player-popup-days::-webkit-scrollbar-thumb:hover {
     background: #555;
 }
 
-/* Fade effect at bottom */
+/* Fade effect */
 .player-popup-days::after {
     content: "";
     position: absolute;
@@ -214,39 +225,15 @@
     height: 50px;
     animation: spin 1s linear infinite;
 }
-.table-wrapper {
-    width: 100%;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    position: relative;
-}
-
-.table-wrapper::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 30px;
-    height: 100%;
-    background: linear-gradient(to left, rgba(255,255,255,0.9), transparent);
-    pointer-events: none;
-}
-
-.matches-table,
-.player-summary-table {
-    min-width: 600px;
-    border-collapse: collapse;
-}
-
 
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
 }
 
-/* Responsive */
+/* -------- Responsive -------- */
+
+/* Tablet */
 @media (max-width: 768px) {
     .matches-header h1 {
         font-size: 1.5rem;
@@ -259,6 +246,7 @@
     }
 }
 
+/* Mobile: convert tables to cards */
 @media (max-width: 480px) {
     .matches-header p {
         font-size: 0.85rem;
@@ -274,7 +262,49 @@
         font-size: 0.8rem;
     }
 
-    .matches-table, .player-summary-table {
-        font-size: 0.75rem;
+    .matches-table,
+    .matches-table thead,
+    .matches-table tbody,
+    .matches-table th,
+    .matches-table td,
+    .matches-table tr,
+    .player-summary-table,
+    .player-summary-table thead,
+    .player-summary-table tbody,
+    .player-summary-table th,
+    .player-summary-table td,
+    .player-summary-table tr {
+        display: block;
+        width: 100%;
+    }
+
+    .matches-table tr,
+    .player-summary-table tr {
+        margin-bottom: 1rem;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        padding: 0.5rem;
+        background: #fff;
+    }
+
+    .matches-table th,
+    .player-summary-table th {
+        display: none;
+    }
+
+    .matches-table td,
+    .player-summary-table td {
+        display: flex;
+        justify-content: space-between;
+        font-size: 13px;
+        padding: 0.25rem 0;
+    }
+
+    .matches-table td::before,
+    .player-summary-table td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        margin-right: 0.5rem;
+        color: #1e3a8a;
     }
 }

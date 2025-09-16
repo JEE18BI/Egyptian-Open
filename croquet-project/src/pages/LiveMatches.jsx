@@ -242,10 +242,11 @@ export default function LiveMatches() {
                                                 <tbody>
                                                 {matchesArr.map((m, i) => (
                                                     <tr key={`${block}-${day}-${i}`}>
-                                                        <td>{m.time}</td>
-                                                        <td>{m.match}</td>
-                                                        <td>{m.court}</td>
-                                                        <td>{m.score}</td>
+                                                        <td data-label="Time">{m.time}</td>
+                                                        <td data-label="Match">{m.match}</td>
+                                                        <td data-label="Court">{m.court}</td>
+                                                        <td data-label="Score">{m.score}</td>
+
                                                     </tr>
                                                 ))}
                                                 </tbody>
