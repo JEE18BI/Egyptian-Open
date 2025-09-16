@@ -111,6 +111,7 @@
 .matches-table th, .matches-table td,
 .player-summary-table th, .player-summary-table td {
     border: 1px solid #ccc;
+
     padding: 0.5rem;
     text-align: left;
     word-break: break-word;
@@ -120,7 +121,6 @@
     background: #dbeafe;
     color: #1e3a8a;
 }
-
 /* Player Popup */
 .player-popup {
     position: fixed;
@@ -308,4 +308,11 @@
         margin-right: 0.5rem;
         color: #1e3a8a;
     }
+    .player-popup {
+        margin-top: 40px;   /* pushes down from very top */
+        margin-bottom: 20px;
+        max-height: 75vh;   /* smaller so it never blocks button */
+        overflow-y: auto;
+
+}
 }
