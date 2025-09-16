@@ -350,7 +350,7 @@
     }
     .player-popup {
         width: 90%;        /* smaller width */
-        max-width: 320px;  /* caps it */
+        max-width: 290px;  /* caps it */
         margin: 40px auto; /* center horizontally, pushes from top */
         padding: 0.5rem;
         border-radius: 8px;
