@@ -137,12 +137,12 @@ export default function Clubs() {
             logo: "🌅",
             photo: club6,
             description: "Exclusive club with top-notch amenities and professional staff. Known for its comfortable setup and variety of services, making it an excellent venue for the championship.",
-            address: " City, Cairo",
+            address: "Agouza, Cairo",
             contact: "",
             facilities: [
                 "1 Croquet Court",
                 "Cafeteria",
-                "Bathrooms "
+                "Bathroom"
             ],
             tips: "If you need anything, You can call Ahmed Mayhoub. You'll find his contact in Help section",
             food: [

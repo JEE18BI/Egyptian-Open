@@ -17,7 +17,7 @@ export default function Help() {
     const faqs = [
         {
             q: "What courts are the tournament played on?",
-            a: "The Egyptian Open is played across multiple prestigious clubs: El-Gezira Club, Federation Courts, Heliopolis Club, Shooting Club, and El-Zohour Club.",
+            a: "The Egyptian Open is played across multiple prestigious clubs: El-Gezira Club, Federation Courts, Heliopolis Club, Shooting Club, El-Zohour Club and El-Zamalek Club",
             icon: "🎾"
         },
         {
