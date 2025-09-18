@@ -73,7 +73,15 @@ const Home = () => {
                 ))}
 
                 <div className="hero-content">
+                    <div className="hero-logo-container">
+                        <img
+                            src="/logo.png" // replace with your actual logo path
+                            alt="Tournament Logo"
+                            className="hero-logo"
+                        />
+                    </div>
                     <h2>WELCOME TO THE 20TH EGYPT OPEN!</h2>
+
                     <p>Where fun and skills meet</p>
                     <button
                         className="view-details-btn"
@@ -81,11 +89,15 @@ const Home = () => {
                     >
                         View Tournament Details
                     </button>
+
                 </div>
             </div>
 
             {/* ABOUT SECTION */}
+
+
             <div className="content-section">
+
                 <h3>About Egypt Open Tournament</h3>
                 <p>
                     The Egypt Open Croquet Championship is the most prestigious

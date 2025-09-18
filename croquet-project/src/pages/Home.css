@@ -8,6 +8,11 @@
 }
 
 /* ================= HERO SECTION ================= */
+.hero-logo {
+    height: 80px; /* adjust as needed */
+    margin-bottom: 15px;
+}
+
 .hero-section {
     position: relative;
     height: 100vh;
@@ -121,6 +126,17 @@
     max-width: 800px;
     margin: 0 auto;
     color: #555;
+}
+.hero-logo-container {
+                  /* push logo to the left */
+    margin-right: 20px;
+    margin-top: 100px;/* space between logo and text */
+}
+
+
+.hero-logo {
+    height: 100px;            /* make logo big */
+    width: auto;              /* keep proportions */
 }
 
 .content-section.dark {

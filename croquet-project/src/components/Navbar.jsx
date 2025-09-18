@@ -14,6 +14,7 @@ const Navbar = () => {
             <div className="nav-container">
                 {/* Logo */}
                 <Link to="/" className="nav-logo" onClick={closeMenu}>
+
                     Egyptian Open
                     <ReactCountryFlag
                         countryCode="EG"
@@ -29,7 +30,7 @@ const Navbar = () => {
 
                 {/* Links */}
                 <div className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
-                    <Link to="/egyptianopen" className="nav-item">
+                    <Link to="/egyptianopen" className="nav-item" onClick={closeMenu}>
                         Home
                     </Link>
                     <Link to="/clubs" className="nav-item" onClick={closeMenu}>
@@ -50,7 +51,6 @@ const Navbar = () => {
                     <Link to="/gallery" className="nav-item" onClick={closeMenu}>
                         Gallery
                     </Link>
-
                     <Link to="/help" className="nav-item" onClick={closeMenu}>
                         Need Help?
                     </Link>
