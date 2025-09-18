@@ -78,6 +78,18 @@
 }
 /* Navbar.css */
 
+.hero-logo2-container {
+    /* push logo to the left */
+    display: flex;
+    justify-content: center;  /* center horizontally */
+    margin-bottom: 20px;
+}
+
+
+.hero2-logo {
+    height: 40px; /* make logo big */
+    width: auto; /* keep proportions */
+}
 /* General navbar styling */
 .navbar {
     background-color: #1a1a1a;

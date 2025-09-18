@@ -13,8 +13,19 @@ const Navbar = () => {
         <nav className="navbar">
             <div className="nav-container">
                 {/* Logo */}
-                <Link to="/" className="nav-logo" onClick={closeMenu}>
 
+                <Link to="/" className="nav-logo" onClick={closeMenu}>
+                    <img
+                        src="/logo.png"
+                        alt="Tournament Logo"
+                        style={{
+                            width: "35px",
+                            height: "40px",
+                            marginRight: "8px",
+                            verticalAlign: "middle",
+                            marginBottom: "8px",
+                        }}
+                    />
                     Egyptian Open
                     <ReactCountryFlag
                         countryCode="EG"
@@ -27,6 +38,7 @@ const Navbar = () => {
                         }}
                     />
                 </Link>
+
 
                 {/* Links */}
                 <div className={`nav-menu ${isMenuOpen ? "active" : ""}`}>
