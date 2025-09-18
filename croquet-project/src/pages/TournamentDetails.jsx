@@ -10,9 +10,9 @@ export default function TournamentDetails() {
                 <div className="tournament-card">
                     <h3>🎾 Matches</h3>
                     <ul>
-                        <li>Matches at 5 clubs, 12 courts.</li>
+                        <li>Matches at 6 clubs, 13 courts.</li>
                         <li>Block play: 5 days, each match is a long game (1 Game of 19 points)</li>
-                        <li>Plate championship will be played </li>
+                        <li>Plate championship will be played in El-Zamalek club</li>
                         <li>Plate -> Block stage is 1 game of 13 points and knockouts are best of 3 games</li>
                     </ul>
                 </div>
