@@ -90,7 +90,7 @@ const Home = () => {
                 <p>
                     The Egypt Open Croquet Championship is the most prestigious
                     croquet event in North Africa, attracting players and enthusiasts
-                    from around the world. Established in 2006, our tournament combines
+                    from around the world. Established in 2005, our tournament combines
                     tradition with competitive excellence.
                 </p>
             </div>
