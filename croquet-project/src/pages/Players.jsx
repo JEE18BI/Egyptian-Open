@@ -215,7 +215,7 @@ export default function Players() {
 
             {/* Footer */}
             <div className="players-footer">
-                <p>88 talented players competing in the 20th Egyptian Open</p>
+                <p>90 talented players competing in the 20th Egyptian Open</p>
             </div>
             {selectedPlayer && (
                 <div className="player-modal" onClick={() => setSelectedPlayer(null)}>
