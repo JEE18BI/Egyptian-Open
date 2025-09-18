@@ -4,12 +4,14 @@ import "./Help.css";
 
 export default function Help() {
     const contacts = [
-        { name: "Dr. Mohamed Raslan (Tournament Director)", phone: "+201005252523", icon: "👑" },
-        { name: "Mohamed Hassan (Tournament Manager)", phone: "+201002597737", icon: "🧑‍💼" },
-        {name: "Jana Mohamed (Tournament Assistant Manager)", phone: "+201060676156", icon: "👩‍💼" },
+        { name: "Dr. Mohamed Raslan (Tournament Director)", phone: "+201005252523", icon: "👑", photo: "/raslan.jpg"  },
+        { name: "Mohamed Hassan (Tournament Manager)", phone: "+201002597737", icon: "🧑‍💼" , photo: "/mhassan.jpg" },
+        {name: "Jana Mohamed (Tournament Assistant Manager)", phone: "+201060676156", icon: "👩‍💼", photo: "/jana.jpg"  },
         { name: "Shooting Club Contact: Ghada", phone: "+01007128666", icon: "🏹" },
-        { name: "El-Zohour Club Contact: Salah Hassan", phone: "+201141191118", icon: "🌅" },
-        { name: "Heliopolis Club Contact: Tasnem Mohamed", phone: "+201060548783", icon: "🌳" } // Blank for now
+        { name: "El-Zohour Club Contact: Mohamed Saeed", phone: "+201222116952", icon: "🌅" },
+        { name: "Heliopolis (El-SHEROUK) Club Contact: Tasnem Mohamed", phone: "+201060548783", icon: "🌳" },
+        { name: "El-Gezira Club Contact: Yasser Esmat", phone: "+201222300663", icon: "🌳" },// Blank for now,
+        { name: "El-Zamalek Club Contact: Ahmed Mayhoub", phone: "+201022174866", icon: "🌳" }// Blank for now
     ];
 
     const faqs = [
@@ -73,13 +75,23 @@ export default function Help() {
                 <div className="contact-cards">
                     {contacts.map((c, index) => (
                         <div key={index} className="contact-card">
-                            <div className="contact-icon">{c.icon}</div>
+                            {/* Photo */}
+                            <div className="contact-photo">
+                                {c.photo ? (
+                                    <img src={c.photo} alt={c.name} />
+                                ) : (
+                                    <span className="photo-placeholder">👤</span>
+                                )}
+                            </div>
+
+                            {/* Icon + Info */}
                             <div className="contact-info">
-                                <h3>{c.name}</h3>
+                                <h3>{c.icon} {c.name}</h3>
                                 {c.phone ? <p>{c.phone}</p> : <p>Contact not available yet</p>}
                             </div>
-                            {c.phone && (
 
+                            {/* Call button */}
+                            {c.phone && (
                                 <a href={`tel:${c.phone}`} className="call-button">
                                     <span>Call Now</span> <span className="phone-icon">📞</span>
                                 </a>
@@ -87,6 +99,7 @@ export default function Help() {
                         </div>
                     ))}
                 </div>
+
             </div>
 
             {/* FAQ Section */}

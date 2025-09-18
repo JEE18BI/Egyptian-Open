@@ -7,7 +7,7 @@ import club2 from "../components/2.jpg";
 import club3 from "../components/3.jpg";
 import club4 from "../components/4.jpg";
 import club5 from "../components/5.jpg";
-
+import club6 from "../components/66.jpg";
 export default function Clubs() {
     const [selectedClub, setSelectedClub] = useState(null);
 
@@ -95,7 +95,7 @@ export default function Clubs() {
                 "Air-conditioned Players’ Lounge",
                 "Bathrooms & Locker Rooms"
             ],
-            tips: "Ghada and Mervat are super helpful! If anything, just look for them.",
+            // tips: "Ghada and Mervat are super helpful! If anything, just look for them.",
             food: [
                 "🥪 Bon Appetit – sandwiches",
                 "🍗 El Lido – shawerma & chicken sandwiches",
@@ -121,7 +121,7 @@ export default function Clubs() {
                 "Air-conditioned Players’ Lounge",
                 "Bathrooms & Locker Rooms"
             ],
-            tips: "If you need anything, You can call Salah Hassan. You'll find his contact in Help section",
+            // tips: "If you need anything, You can call Salah Hassan. You'll find his contact in Help section",
             food: [
                 "🏨 Four Seasons – fine dining nearby",
                 "🍴 Half Time – quick outlet for snacks & light meals",
@@ -130,6 +130,27 @@ export default function Clubs() {
                 "🥤 Nearby coffeeshops – casual options around the club"
             ],
             location:"https://maps.app.goo.gl/sCMjZJUe5TthFePU8?g_st=ipc"
+        },
+        {
+            id: 6,
+            name: "El-Zamalek Club",
+            logo: "🌅",
+            photo: club6,
+            description: "Exclusive club with top-notch amenities and professional staff. Known for its comfortable setup and variety of services, making it an excellent venue for the championship.",
+            address: " City, Cairo",
+            contact: "",
+            facilities: [
+                "1 Croquet Court",
+                "Cafeteria",
+                "Bathrooms "
+            ],
+            tips: "If you need anything, You can call Ahmed Mayhoub. You'll find his contact in Help section",
+            food: [
+
+                "☕ Club Cafeteria – serves all beverages, pies & crepes , and full meals",
+
+            ],
+            location:"https://maps.app.goo.gl/8vhmxeB1oFiZzSxA7?g_st=ipc"
         }
 
     ];
