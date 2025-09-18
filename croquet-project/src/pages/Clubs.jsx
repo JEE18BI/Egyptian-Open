@@ -136,7 +136,7 @@ export default function Clubs() {
             name: "El-Zamalek Club",
             logo: "🌅",
             photo: club6,
-            description: "Exclusive club with top-notch amenities and professional staff. Known for its comfortable setup and variety of services, making it an excellent venue for the championship.",
+            description: "Historic club with a rich legacy in sports and culture. Known for its passionate spirit, iconic teams, and excellent facilities, making it a landmark destination in Egyptian athletics.",
             address: "Agouza, Cairo",
             contact: "",
             facilities: [
