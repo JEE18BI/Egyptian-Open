@@ -7,7 +7,7 @@ export default function Help() {
         { name: "Dr. Mohamed Raslan (Tournament Director)", phone: "+201005252523", icon: "👑", photo: "/raslan.jpg"  },
         { name: "Mohamed Hassan (Tournament Manager)", phone: "+201002597737", icon: "🧑‍💼" , photo: "/mhassan.jpg" },
         {name: "Jana Mohamed (Tournament Assistant Manager)", phone: "+201060676156", icon: "👩‍💼", photo: "/jana.jpg"  },
-        { name: "Shooting Club Contact: Ghada", phone: "+01007128666", icon: "🏹" },
+        { name: "Shooting Club Contact: Fouad El-Nashhar", phone: "+01066600070", icon: "🏹" },
         { name: "El-Zohour Club Contact: Mohamed Saeed", phone: "+201222116952", icon: "🌅" },
         { name: "Heliopolis (El-SHEROUK) Club Contact: Tasnem Mohamed", phone: "+201060548783", icon: "🌳" },
         { name: "El-Gezira Club Contact: Yasser Esmat", phone: "+201222300663", icon: "🌳" },// Blank for now,
