@@ -156,7 +156,7 @@ export const playersData = [
     },
     {
         country: "England",
-        code: "GB",
+        code: "ENG",
         players: [
             { id: 62, name: "Dominic Nunns", photo: "/players/dominic.png" },
             { id: 63, name: "Ashley Deakin", photo: "/players/ashley.jpg" },
@@ -182,17 +182,26 @@ export default function Players() {
             {playersData.map((group, i) => (
                 <div key={i} className="country-section">
                     <div className="country-header">
-                        <ReactCountryFlag
-                            countryCode={group.code}
-                            svg
-                            style={{
-                                width: "2em",
-                                height: "2em",
-                                marginRight: "0.5rem"
-                            }}
-                        />
+                        {group.code === "ENG" ? (
+                            <img
+                                src="/England.png"
+                                alt="England Flag"
+                                style={{ width: "2em", height: "2em", marginRight: "0.5rem" }}
+                            />
+                        ) : (
+                            <ReactCountryFlag
+                                countryCode={group.code}
+                                svg
+                                style={{
+                                    width: "2em",
+                                    height: "2em",
+                                    marginRight: "0.5rem"
+                                }}
+                            />
+                        )}
                         <h2>{group.country}</h2>
                     </div>
+
                     <div className="players-container">
                         {group.players.map(player => (
                             <div key={player.id} className="player-card">
