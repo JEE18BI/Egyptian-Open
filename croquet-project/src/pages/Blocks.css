@@ -56,7 +56,7 @@
     padding: 12px;
 }
 
- --- Block Cards ---
+ /*--- Block Cards ---*/
 .block-card{
     background: linear-gradient(180deg, var(--card), var(--soft));
     border-radius: var(--radius);
