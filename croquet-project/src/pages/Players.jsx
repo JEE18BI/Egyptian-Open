@@ -46,7 +46,7 @@ export const playersData = [
             { id: 106, name: "Ahmed El-Ammary", photo: "/players/ammary.jpg" },
             { id: 107, name: "Ahmed Kamal", photo: "/players/ahmedkamal.jpg" },
             { id: 108, name: "Mostafa Samir", photo: "/players/mostafasamir.jpg" },
-            { id: 108, name: "ElSaeed Mahmoud", photo: "/players/ElSaeed.jpg" },
+            { id: 108, name: "ElSaeed Mahmoud", photo: "/players/ElSaeed.png" },
             { id: 108, name: "Ghada Azmy", photo: "/players/ghadaazmy.jpg" },
             { id: 109, name: "Wael Abbas", photo: "/players/waelabbas.jpg" },
 
