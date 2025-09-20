@@ -8,7 +8,7 @@ export const playersData = [
         players: [
             { id: 1, name: "Ahmed Nasr", photo: "/players/ahmednasr.jpg" },
             { id: 2, name: "Mohamed Nasr", photo: "/players/2.jpg" },
-            { id: 3, name: "Soha Mostafa", photo: "/players/soha.jpg" },
+
             { id: 4, name: "Mohamed Walid", photo: "/players/waleed.jpg" },
             { id: 5, name: "Mohamed Taha", photo: "/players/5.jpg" },
             { id: 6, name: "Fawzy Helmy", photo: "/players/fawzy.jpg" },
@@ -48,6 +48,7 @@ export const playersData = [
             { id: 108, name: "Mostafa Samir", photo: "/players/mostafasamir.jpg" },
             { id: 108, name: "ElSaeed Mahmoud", photo: "/players/ElSaeed.jpg" },
             { id: 108, name: "Ghada Azmy", photo: "/players/ghadaazmy.jpg" },
+            { id: 109, name: "Wael Abbas", photo: "/players/waelabbas.jpg" },
 
 
 
