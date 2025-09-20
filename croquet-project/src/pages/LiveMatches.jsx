@@ -146,7 +146,7 @@ import { playersData } from "./Players";
                 <h1>Matches</h1>
                 <p>Check the schedule and search for your match</p>
                 <p>After choosing your block, choose your day and scroll down to see all matches</p>
-
+                <p>Or enter your name below for a summary (also Check your block for details)</p>
                 {/* 🔎 Search + Autocomplete */}
                 <div className="search-box">
                     <input
