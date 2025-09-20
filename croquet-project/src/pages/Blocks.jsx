@@ -90,7 +90,7 @@ export default function Blocks() {
                 "Amr Hamdy",
                 "Ghasan Saba",
                 "Ashley Deakin",
-                "Sara persons",
+                "Sarah Persons",
                 "Wael Aabas",
                 "Manuel Antonio"
             ]
