@@ -31,7 +31,7 @@ export default function TournamentDetails() {
                 <div className="tournament-card">
                     <h3>🚌 Transportation</h3>
                     <ul>
-                        <li>Buses: From Federation Courts → Heliopolis & El-Zohour clubs</li>
+                        <li> Buses will be available daily 🚍 at Gezira Club Gate 5 (the gate we use to reach the Federation courts) at 8:00 AM for transportation to El Zohour and Heliopolis clubs. </li>
                         <li>Shooting Club: 5 minutes from Federation Courts</li>
                         <li>Gezira Club's courts and Federation are in the same place</li>
                     </ul>
