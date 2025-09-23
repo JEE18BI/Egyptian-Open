@@ -147,6 +147,27 @@
 .gallery-item:hover img {
     transform: scale(1.05);
 }
+.drive-button-container {
+    text-align: center;
+    margin-top: 20px;
+    margin-right: 40px;
+}
+
+.drive-button {
+    display: inline-block;
+    padding: 12px 20px;
+    background-color: #4285f4; /* Google blue */
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.drive-button:hover {
+    background-color: #3367d6;
+}
+
 
 /* ==============================
    Announcement / Hotel Styling
@@ -195,5 +216,11 @@
     .gallery-grid,
     .announcements-wrapper {
         grid-template-columns: 1fr;
+    }
+
+    .drive-button-container {
+        text-align: center;
+        margin-top: 20px;
+        margin-left:40px;
     }
 }

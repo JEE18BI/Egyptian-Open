@@ -15,15 +15,21 @@ export default function Gallery() {
                 >
                     <span className="whatsapp-icon">💬</span> Send us your Photos
                 </a>
+
+                {/* Centered Google Drive button */}
+                <div className="drive-button-container">
+                    <a
+                        href="https://drive.google.com/drive/folders/1R-MM6lhg4wjbu6QbzC7cecKPFZxXHZ9_?usp=sharing"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="drive-button"
+                    >
+                        📂 Open in Google Drive
+                    </a>
+                </div>
             </div>
 
-            {/* Later you’ll insert the photo grid here */}
-            <div className="gallery-grid">
-                {/* Example placeholder */}
-                <p style={{ textAlign: "center", color: "#7f8c8d" }}>
-                    Photos will appear here soon...
-                </p>
-            </div>
+
         </div>
     );
 }

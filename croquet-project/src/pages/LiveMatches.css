@@ -24,6 +24,43 @@
     margin-top: 0.5rem;
     box-sizing: border-box;
 }
+/* Live Streaming Section */
+.div-Live {
+    margin-top: 1rem;
+    padding: 0.8rem 1rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background: #f9fafb;
+    text-align: center;
+    max-width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Live {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1e3a8a;
+    margin-bottom: 0.5rem;
+}
+
+.Live-button {
+    display: inline-block;
+    padding: 0.5rem 1rem;
+    background: #1e3a8a;
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: background 0.3s;
+}
+
+.Live-button:hover {
+    background: #3b5bb5;
+}
+
+
+
 
 /* Block + Day Wrappers */
 .block-wrapper, .day-wrapper {
