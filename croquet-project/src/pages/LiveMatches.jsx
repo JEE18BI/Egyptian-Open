@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import "./LiveMatches.css";
 import { playersData } from "./Players";
+import QualifyingStage from "./QualifyingBracket.jsx"; // ⬅️ import bracket
 
- export default function LiveMatches() {
-
-
+export default function LiveMatches() {
+    const [showQualifying, setShowQualifying] = useState(false);
 
     const [matches, setMatches] = useState([]);
     const [groupedMatches, setGroupedMatches] = useState({});
@@ -18,10 +18,9 @@ import { playersData } from "./Players";
     const [showPlayerPopup, setShowPlayerPopup] = useState(false);
     const [searchTriggered, setSearchTriggered] = useState(false);
 
-    // Flatten playersData into objects with name + photo
     const allPlayers = playersData.flatMap((group) => group.players);
 
-    // Fetch matches from Google Sheets
+    // 🔹 fetch matches as before …
     useEffect(() => {
         setIsLoading(true);
         const matchesUrl =
@@ -60,7 +59,7 @@ import { playersData } from "./Players";
         });
     }, []);
 
-    // Group matches by block → day
+    // 🔹 group matches as before …
     useEffect(() => {
         const grouped = matches.reduce((acc, item) => {
             const block = item.BLOCK?.trim() || "No Block";
@@ -85,7 +84,6 @@ import { playersData } from "./Players";
             return acc;
         }, {});
 
-      // Sort blocks and days
         const sortedGrouped = Object.keys(grouped)
             .sort()
             .reduce((acc, block) => {
@@ -101,36 +99,6 @@ import { playersData } from "./Players";
         setGroupedMatches(sortedGrouped);
     }, [matches]);
 
-    const handleSearch = () => {
-        setSearchTriggered(true);
-        setShowPlayerPopup(true);
-    };
-
-    const handleSelectPlayer = (playerName) => {
-        setSearchTerm(playerName);
-        setSearchTriggered(true);
-        setShowPlayerPopup(true);
-    };
-
-    // Autocomplete suggestions from playersData
-    const suggestions =
-        searchTerm.length > 0
-            ? allPlayers.filter((p) =>
-                p.name.toLowerCase().includes(searchTerm.toLowerCase())
-            )
-            : [];
-
-    // Normalize & match player name
-    const normalizedSearch = searchTerm.trim().toLowerCase();
-    const matchedPlayers = Object.keys(playerMap).filter((p) =>
-        p.toLowerCase().includes(normalizedSearch)
-    );
-
-    const playerSummary =
-        searchTriggered && matchedPlayers.length > 0
-            ? matchedPlayers.flatMap((player) => playerMap[player])
-            : [];
-
     if (isLoading)
         return (
             <div className="live-matches-page">
@@ -143,161 +111,121 @@ import { playersData } from "./Players";
     return (
         <div className="live-matches-page">
             <div className="matches-header">
-
                 <h1>Matches</h1>
                 <p>Check the schedule and search for your match</p>
-                <p>After choosing your block, choose your day and scroll down to see all matches</p>
-                <p>Or enter your name below for a summary (also Check your block for details)</p>
-                {/* 🔎 Search + Autocomplete */}
-                <div className="search-box">
-                    <input
-                        type="text"
-                        placeholder="Enter player name..."
-                        value={searchTerm}
-                        onChange={(e) => {
-                            setSearchTerm(e.target.value);
-                            setSearchTriggered(false);
-                        }}
-                        className="match-search-input"
-                    />
-                    <button className="search-btn" onClick={handleSearch}>
-                        Search
-                    </button>
 
-
-                    {suggestions.length > 0 && (
-                        <ul className="autocomplete-list">
-                            {suggestions.map((p) => (
-                                <li key={p.name} onClick={() => handleSelectPlayer(p.name)}>
-                                    <img
-                                        src={p.photo}
-                                        alt={p.name}
-                                        style={{ width: "30px", height: "30px", borderRadius: "50%", marginRight: "8px" }}
-                                    />
-                                    {p.name}
-                                </li>
-                            ))}
-                        </ul>
-                    )}
-                </div>
-                <div className="div-Live">
-                    <p className="Live"> Now check the live streaming for day 1 : </p>
-                    <a
-                        href="https://www.facebook.com/share/v/15k1nyaHvS/?mibextid=wwXIfr"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="Live-button"
+                {/* 🔹 NEW TOGGLE BUTTONS */}
+                <div className="view-toggle">
+                    <button
+                        className={!showQualifying ? "active" : ""}
+                        onClick={() => setShowQualifying(false)}
                     >
-                        Click Here
-                    </a>
+                        Main Matches
+                    </button>
+                    <button
+                        className={showQualifying ? "active" : ""}
+                        onClick={() => setShowQualifying(true)}
+                    >
+                        Qualifying Stage
+                    </button>
                 </div>
-
             </div>
 
+            {/* 🔹 CONDITIONAL RENDER */}
+            {showQualifying ? (
+                <QualifyingStage />
+            ) : (
+                <>
+                    {Object.entries(groupedMatches).length === 0 && (
+                        <div className="no-matches">No matches found.</div>
+                    )}
 
-          {playerSummary.length > 0 && showPlayerPopup && (
-                <div className="player-popup">
-                    <div className="player-popup-header">
-                        <h3>Your Schedule</h3>
-                        <button className="close-popup-btn" onClick={() => setShowPlayerPopup(false)}>
-                            Close
-                        </button>
-                    </div>
-                    <div className="player-popup-days">
-                {Object.entries(
-                            playerSummary.reduce((acc, m) => {
-                                acc[m.day] = acc[m.day] || [];
-                                acc[m.day].push(m);
-                                return acc;
-                            }, {})
-                        ).map(([day, matches]) => (
-                            <div key={day} className="day-group">
-                                <h4 className="day-title">{`Day ${day}`}</h4>
-                                <div className="table-wrapper">
-                                    <table className="player-summary-table">
-                                       <thead>
-                                       <tr>
-                                        <th>Court</th>
-                                          <th>Time</th>
-                                           <th>Match</th>
-                                        </tr>
-                                       </thead>
-                                       <tbody>
-                                        {matches.map((m, i) => (
-                                           <tr key={`${day}-${i}`}>
-                                                 <td>{m.court}</td>
-                                                <td>{m.time}</td>
-                                                <td>{m.match}</td>
-                                            </tr>
-                                        ))}
-                                        </tbody>
-                                    </table>
-                                 </div>
-                             </div>
-                        ))}
-                     </div>
-                 </div>
-             )}
+                    {Object.entries(groupedMatches).map(([block, days]) => (
+                        <div key={block} className="block-wrapper">
+                            <div
+                                className={`block-header ${
+                                    activeBlock === block ? "active" : ""
+                                }`}
+                                onClick={() => {
+                                    setActiveBlock(activeBlock === block ? null : block);
+                                    setActiveDay(null);
+                                }}
+                            >
+                                <span>{`Block ${block}`}</span>
+                                <span className="toggle-icon">
+                                    {activeBlock === block ? "−" : "+"}
+                                </span>
+                            </div>
 
-
-            {Object.entries(groupedMatches).length === 0 && <div className="no-matches">No matches found.</div>}
-
-             {Object.entries(groupedMatches).map(([block, days]) => (
-                <div key={block} className="block-wrapper">
-                     <div
-                         className={`block-header ${activeBlock === block ? "active" : ""}`}
-                         onClick={() => {
-                             setActiveBlock(activeBlock === block ? null : block);
-                             setActiveDay(null);
-                         }}
-                     >
-                         <span>{`Block ${block}`}</span>
-                         <span className="toggle-icon">{activeBlock === block ? "−" : "+"}</span>
-                     </div>
-
-                     <div className={`block-content ${activeBlock === block ? "open" : ""}`}>
-                         {Object.entries(days).map(([day, matchesArr]) => (
-                             <div key={day} className="day-wrapper">
-                                 <div
-                                     className={`day-header ${activeDay === `${block}-${day}` ? "active" : ""}`}
-                                     onClick={() =>
-                                         setActiveDay(activeDay === `${block}-${day}` ? null : `${block}-${day}`)
-                                     }
-                                 >
-                                     <span>{`Day ${day}`}</span>
-                                     <span className="toggle-icon">{activeDay === `${block}-${day}` ? "−" : "+"}</span>
-                                 </div>
-                                 <div className={`day-content ${activeDay === `${block}-${day}` ? "open" : ""}`}>
-                                     {activeDay === `${block}-${day}` && (
-                                         <div className="matches-scroll">
-                                             <table className="matches-table">
-                                                 <thead>
-                                                 <tr>
-                                                     <th>Time</th>
-                                                     <th>Match</th>
-                                                     <th>Court</th>
-                                                     <th>Score</th>
-                                                 </tr>
-                                                 </thead>
-                                                 <tbody>
-                                                 {matchesArr.map((m, i) => (
-                                                     <tr key={`${block}-${day}-${i}`}>
-                                                         <td data-label="Time">{m.time}</td>
-                                                         <td data-label="Match">{m.match}</td>
-                                                         <td data-label="Court">{m.court}</td>
-                                                         <td data-label="Score">{m.score}</td>
-                                                     </tr>
-                                                 ))}
-                                                 </tbody>
-                                             </table>
-                                         </div>
-                                     )}
-                                 </div>
-                             </div>
-                         ))}
-                     </div>
-                 </div>
-             ))}
-         </div>
-     );
- }
+                            <div
+                                className={`block-content ${
+                                    activeBlock === block ? "open" : ""
+                                }`}
+                            >
+                                {Object.entries(days).map(([day, matchesArr]) => (
+                                    <div key={day} className="day-wrapper">
+                                        <div
+                                            className={`day-header ${
+                                                activeDay === `${block}-${day}`
+                                                    ? "active"
+                                                    : ""
+                                            }`}
+                                            onClick={() =>
+                                                setActiveDay(
+                                                    activeDay === `${block}-${day}`
+                                                        ? null
+                                                        : `${block}-${day}`
+                                                )
+                                            }
+                                        >
+                                            <span>{`Day ${day}`}</span>
+                                            <span className="toggle-icon">
+                                                {activeDay === `${block}-${day}`
+                                                    ? "−"
+                                                    : "+"}
+                                            </span>
+                                        </div>
+                                        <div
+                                            className={`day-content ${
+                                                activeDay === `${block}-${day}`
+                                                    ? "open"
+                                                    : ""
+                                            }`}
+                                        >
+                                            {activeDay === `${block}-${day}` && (
+                                                <div className="matches-scroll">
+                                                    <table className="matches-table">
+                                                        <thead>
+                                                        <tr>
+                                                            <th>Time</th>
+                                                            <th>Match</th>
+                                                            <th>Court</th>
+                                                            <th>Score</th>
+                                                        </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                        {matchesArr.map((m, i) => (
+                                                            <tr
+                                                                key={`${block}-${day}-${i}`}
+                                                            >
+                                                                <td>{m.time}</td>
+                                                                <td>{m.match}</td>
+                                                                <td>{m.court}</td>
+                                                                <td>{m.score}</td>
+                                                            </tr>
+                                                        ))}
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            )}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    ))}
+                </>
+            )}
+        </div>
+    );
+}

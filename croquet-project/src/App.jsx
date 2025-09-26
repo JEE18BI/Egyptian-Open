@@ -38,6 +38,7 @@ function App() {
                         <Route path="/clubs" element={<PageWrapper><Clubs /></PageWrapper>} />
                         <Route path="/blocks" element={<PageWrapper><Blocks /></PageWrapper>} />
                         <Route path="/matches" element={<PageWrapper><LiveMatches /></PageWrapper>} />
+
                         <Route path="/announcements" element={<PageWrapper><Announcements /></PageWrapper>} />
                         <Route path="/gallery" element={<PageWrapper><Gallery /></PageWrapper>} />
                         <Route path="/players" element={<PageWrapper><Players /></PageWrapper>} />
