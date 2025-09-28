@@ -6,10 +6,11 @@ import QualifyingStage from "./QualifyingBracket.jsx";
 import ChampionshipTree from "/MainChampionship.png"; // ⬅️ your tree photo
 
 export default function LiveMatches() {
-    const [view, setView] = useState("main"); // "main" | "qualifying" | "tree"
+    const [view, setView] = useState("main"); // "main" | "qualifying" | "tree" | "plate"
 
     const [matches, setMatches] = useState([]);
     const [groupedMatches, setGroupedMatches] = useState({});
+    const [plateMatches, setPlateMatches] = useState({});
     const [activeBlock, setActiveBlock] = useState(null);
     const [activeDay, setActiveDay] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
@@ -60,21 +61,28 @@ export default function LiveMatches() {
         });
     }, []);
 
-    // 🔹 group matches
+    // 🔹 group matches (main + plate separately)
     useEffect(() => {
-        const grouped = matches.reduce((acc, item) => {
+        const grouped = {};
+        const plateGrouped = {};
+
+        matches.forEach((item) => {
             const block = item.BLOCK?.trim() || "No Block";
             const day = item.DAY?.trim() || "Unknown Day";
             const court = item.COURT?.trim() || "No Court";
             const match = item.MATCH?.trim();
             const score = item.SCORE?.trim() || "";
-            if (!match) return acc;
+            if (!match) return;
 
-            acc[block] = acc[block] || {};
-            acc[block][day] = acc[block][day] || [];
-            const isFirstOnCourt = acc[block][day].every((m) => m.court !== court);
+            const isPlate = block.toLowerCase().includes("plate");
 
-            acc[block][day].push({
+            const target = isPlate ? plateGrouped : grouped;
+
+            target[block] = target[block] || {};
+            target[block][day] = target[block][day] || [];
+            const isFirstOnCourt = target[block][day].every((m) => m.court !== court);
+
+            target[block][day].push({
                 match,
                 time: isFirstOnCourt ? item.TIME?.trim() || "Start" : item.TIME,
                 court,
@@ -82,22 +90,23 @@ export default function LiveMatches() {
                 day,
                 score,
             });
-            return acc;
-        }, {});
+        });
 
-        const sortedGrouped = Object.keys(grouped)
-            .sort()
-            .reduce((acc, block) => {
-                acc[block] = Object.keys(grouped[block])
-                    .sort()
-                    .reduce((dAcc, day) => {
-                        dAcc[day] = grouped[block][day];
-                        return dAcc;
-                    }, {});
-                return acc;
-            }, {});
+        const sortGrouped = (data) =>
+            Object.keys(data)
+                .sort()
+                .reduce((acc, block) => {
+                    acc[block] = Object.keys(data[block])
+                        .sort()
+                        .reduce((dAcc, day) => {
+                            dAcc[day] = data[block][day];
+                            return dAcc;
+                        }, {});
+                    return acc;
+                }, {});
 
-        setGroupedMatches(sortedGrouped);
+        setGroupedMatches(sortGrouped(grouped));
+        setPlateMatches(sortGrouped(plateGrouped));
     }, [matches]);
 
     if (isLoading)
@@ -108,6 +117,88 @@ export default function LiveMatches() {
                 </div>
             </div>
         );
+
+    // 🔹 reusable block/day/match renderer
+    const renderGroupedMatches = (grouped) => (
+        <>
+            {Object.entries(grouped).length === 0 && (
+                <div className="no-matches">No matches found.</div>
+            )}
+
+            {Object.entries(grouped).map(([block, days]) => (
+                <div key={block} className="block-wrapper">
+                    <div
+                        className={`block-header ${activeBlock === block ? "active" : ""}`}
+                        onClick={() => {
+                            setActiveBlock(activeBlock === block ? null : block);
+                            setActiveDay(null);
+                        }}
+                    >
+                        <span>{` ${block}`}</span>
+                        <span className="toggle-icon">
+                            {activeBlock === block ? "−" : "+"}
+                        </span>
+                    </div>
+
+                    <div
+                        className={`block-content ${activeBlock === block ? "open" : ""}`}
+                    >
+                        {Object.entries(days).map(([day, matchesArr]) => (
+                            <div key={day} className="day-wrapper">
+                                <div
+                                    className={`day-header ${
+                                        activeDay === `${block}-${day}` ? "active" : ""
+                                    }`}
+                                    onClick={() =>
+                                        setActiveDay(
+                                            activeDay === `${block}-${day}`
+                                                ? null
+                                                : `${block}-${day}`
+                                        )
+                                    }
+                                >
+                                    <span>{`Day ${day}`}</span>
+                                    <span className="toggle-icon">
+                                        {activeDay === `${block}-${day}` ? "−" : "+"}
+                                    </span>
+                                </div>
+                                <div
+                                    className={`day-content ${
+                                        activeDay === `${block}-${day}` ? "open" : ""
+                                    }`}
+                                >
+                                    {activeDay === `${block}-${day}` && (
+                                        <div className="matches-scroll">
+                                            <table className="matches-table">
+                                                <thead>
+                                                <tr>
+                                                    <th>Time</th>
+                                                    <th>Match</th>
+                                                    <th>Court</th>
+                                                    <th>Score</th>
+                                                </tr>
+                                                </thead>
+                                                <tbody>
+                                                {matchesArr.map((m, i) => (
+                                                    <tr key={`${block}-${day}-${i}`}>
+                                                        <td>{m.time}</td>
+                                                        <td>{m.match}</td>
+                                                        <td>{m.court}</td>
+                                                        <td>{m.score}</td>
+                                                    </tr>
+                                                ))}
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            ))}
+        </>
+    );
 
     return (
         <div className="live-matches-page">
@@ -135,6 +226,12 @@ export default function LiveMatches() {
                     >
                         Championship Tree
                     </button>
+                    <button
+                        className={view === "plate" ? "active" : ""}
+                        onClick={() => setView("plate")}
+                    >
+                        Plate Matches
+                    </button>
                 </div>
             </div>
 
@@ -149,95 +246,10 @@ export default function LiveMatches() {
                         className="championship-tree"
                     />
                 </div>
+            ) : view === "plate" ? (
+                renderGroupedMatches(plateMatches)
             ) : (
-                <>
-                    {Object.entries(groupedMatches).length === 0 && (
-                        <div className="no-matches">No matches found.</div>
-                    )}
-
-                    {Object.entries(groupedMatches).map(([block, days]) => (
-                        <div key={block} className="block-wrapper">
-                            <div
-                                className={`block-header ${
-                                    activeBlock === block ? "active" : ""
-                                }`}
-                                onClick={() => {
-                                    setActiveBlock(activeBlock === block ? null : block);
-                                    setActiveDay(null);
-                                }}
-                            >
-                                <span>{` ${block}`}</span>
-                                <span className="toggle-icon">
-                                    {activeBlock === block ? "−" : "+"}
-                                </span>
-                            </div>
-
-                            <div
-                                className={`block-content ${
-                                    activeBlock === block ? "open" : ""
-                                }`}
-                            >
-                                {Object.entries(days).map(([day, matchesArr]) => (
-                                    <div key={day} className="day-wrapper">
-                                        <div
-                                            className={`day-header ${
-                                                activeDay === `${block}-${day}`
-                                                    ? "active"
-                                                    : ""
-                                            }`}
-                                            onClick={() =>
-                                                setActiveDay(
-                                                    activeDay === `${block}-${day}`
-                                                        ? null
-                                                        : `${block}-${day}`
-                                                )
-                                            }
-                                        >
-                                            <span>{`Day ${day}`}</span>
-                                            <span className="toggle-icon">
-                                                {activeDay === `${block}-${day}`
-                                                    ? "−"
-                                                    : "+"}
-                                            </span>
-                                        </div>
-                                        <div
-                                            className={`day-content ${
-                                                activeDay === `${block}-${day}`
-                                                    ? "open"
-                                                    : ""
-                                            }`}
-                                        >
-                                            {activeDay === `${block}-${day}` && (
-                                                <div className="matches-scroll">
-                                                    <table className="matches-table">
-                                                        <thead>
-                                                        <tr>
-                                                            <th>Time</th>
-                                                            <th>Match</th>
-                                                            <th>Court</th>
-                                                            <th>Score</th>
-                                                        </tr>
-                                                        </thead>
-                                                        <tbody>
-                                                        {matchesArr.map((m, i) => (
-                                                            <tr key={`${block}-${day}-${i}`}>
-                                                                <td>{m.time}</td>
-                                                                <td>{m.match}</td>
-                                                                <td>{m.court}</td>
-                                                                <td>{m.score}</td>
-                                                            </tr>
-                                                        ))}
-                                                        </tbody>
-                                                    </table>
-                                                </div>
-                                            )}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    ))}
-                </>
+                renderGroupedMatches(groupedMatches)
             )}
         </div>
     );
