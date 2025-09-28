@@ -76,7 +76,7 @@ export default function LiveMatches() {
 
             acc[block][day].push({
                 match,
-                time: isFirstOnCourt ? item.TIME?.trim() || "Start" : "To Follow",
+                time: isFirstOnCourt ? item.TIME?.trim() || "Start" : item.TIME,
                 court,
                 block,
                 day,
