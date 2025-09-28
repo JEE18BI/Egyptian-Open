@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import Papa from "papaparse";
 import "./LiveMatches.css";
 import { playersData } from "./Players";
-import QualifyingStage from "./QualifyingBracket.jsx"; // ⬅️ import bracket
+import QualifyingStage from "./QualifyingBracket.jsx";
+import ChampionshipTree from "/MainChampionship.png"; // ⬅️ your tree photo
 
 export default function LiveMatches() {
-    const [showQualifying, setShowQualifying] = useState(false);
+    const [view, setView] = useState("main"); // "main" | "qualifying" | "tree"
 
     const [matches, setMatches] = useState([]);
     const [groupedMatches, setGroupedMatches] = useState({});
@@ -20,7 +21,7 @@ export default function LiveMatches() {
 
     const allPlayers = playersData.flatMap((group) => group.players);
 
-    // 🔹 fetch matches as before …
+    // 🔹 fetch matches
     useEffect(() => {
         setIsLoading(true);
         const matchesUrl =
@@ -59,7 +60,7 @@ export default function LiveMatches() {
         });
     }, []);
 
-    // 🔹 group matches as before …
+    // 🔹 group matches
     useEffect(() => {
         const grouped = matches.reduce((acc, item) => {
             const block = item.BLOCK?.trim() || "No Block";
@@ -114,26 +115,40 @@ export default function LiveMatches() {
                 <h1>Matches</h1>
                 <p>Check the schedule and search for your match</p>
 
-                {/* 🔹 NEW TOGGLE BUTTONS */}
+                {/* 🔹 VIEW TOGGLE BUTTONS */}
                 <div className="view-toggle">
                     <button
-                        className={!showQualifying ? "active" : ""}
-                        onClick={() => setShowQualifying(false)}
+                        className={view === "main" ? "active" : ""}
+                        onClick={() => setView("main")}
                     >
                         Main Matches
                     </button>
                     <button
-                        className={showQualifying ? "active" : ""}
-                        onClick={() => setShowQualifying(true)}
+                        className={view === "qualifying" ? "active" : ""}
+                        onClick={() => setView("qualifying")}
                     >
                         Qualifying Stage
+                    </button>
+                    <button
+                        className={view === "tree" ? "active" : ""}
+                        onClick={() => setView("tree")}
+                    >
+                        Championship Tree
                     </button>
                 </div>
             </div>
 
             {/* 🔹 CONDITIONAL RENDER */}
-            {showQualifying ? (
+            {view === "qualifying" ? (
                 <QualifyingStage />
+            ) : view === "tree" ? (
+                <div className="championship-tree-container">
+                    <img
+                        src={ChampionshipTree}
+                        alt="Championship Bracket Tree"
+                        className="championship-tree"
+                    />
+                </div>
             ) : (
                 <>
                     {Object.entries(groupedMatches).length === 0 && (
@@ -151,7 +166,7 @@ export default function LiveMatches() {
                                     setActiveDay(null);
                                 }}
                             >
-                                <span>{`Block ${block}`}</span>
+                                <span>{` ${block}`}</span>
                                 <span className="toggle-icon">
                                     {activeBlock === block ? "−" : "+"}
                                 </span>
@@ -205,9 +220,7 @@ export default function LiveMatches() {
                                                         </thead>
                                                         <tbody>
                                                         {matchesArr.map((m, i) => (
-                                                            <tr
-                                                                key={`${block}-${day}-${i}`}
-                                                            >
+                                                            <tr key={`${block}-${day}-${i}`}>
                                                                 <td>{m.time}</td>
                                                                 <td>{m.match}</td>
                                                                 <td>{m.court}</td>
