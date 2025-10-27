@@ -1,0 +1,20 @@
+.nextyear-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    text-align: center;
+    padding: 2rem;
+    background: #f0f0f0;
+    color: #222;
+}
+
+.nextyear-container h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.nextyear-container p {
+    font-size: 1.5rem;
+}
